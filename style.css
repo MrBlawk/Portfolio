@@ -1,0 +1,26 @@
+body {
+
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+    margin: 0 auto;
+    font-size: 35px;
+    margin: 10px;    
+}
+
+.flex-container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.flex-column{
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+
+}

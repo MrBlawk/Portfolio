@@ -21,6 +21,10 @@ function handleTurn(event)
 
     });
 
+board[idx] = turn;
+
+console.log(board);
+
 };
 
 function init(){

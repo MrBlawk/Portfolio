@@ -1,12 +1,23 @@
 <script type="module">
 import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
 
+function resizeRendererToDisplaySize(renderer) {
+  const canvas = renderer.domElement;
+  const width = canvas.clientWidth;
+  const height = canvas.clientHeight;
+  const needResize = canvas.width !== width || canvas.height !== height;
+  if (needResize) {
+    renderer.setSize(width, height, false);
+  }
+  return needResize;
+}
+
 function main() {
     const canvas = document.querySelector('#c');
   const renderer = new THREE.WebGLRenderer({canvas});
 
-  const fov = 75;
-  const aspect = 2;  // the canvas default
+  const fov = 60;
+  const aspect = 1;  // the canvas default
   const near = 0.1;
   const far = 5;
   const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
@@ -22,10 +33,10 @@ function main() {
     scene.add(light);
   }
 
-  const boxWidth = 1;
-  const boxHeight = 1;
-  const boxDepth = 1;
-  const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+  const radius = 1;
+  const detail = 2;
+  
+  const geometry = new THREE.DodecahedronGeometry(radius, detail);
 
   function makeInstance(geometry, color, x) {
     const material = new THREE.MeshPhongMaterial({color});
@@ -33,19 +44,22 @@ function main() {
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
-    cube.position.x = x;
+    cube.position.x = 0;
+    cube.position.z = -1;
 
     return cube;
   }
 
   const cubes = [
-    makeInstance(geometry, 0x44aa88,  0),
-    makeInstance(geometry, 0x8844aa, -2),
-    makeInstance(geometry, 0xaa8844,  2),
+    makeInstance(geometry, 0x70ABAF,  0),
+    makeInstance(geometry, 0xF0F7F4, -2),
+    makeInstance(geometry, 0x32292F,  2),
   ];
 
   function render(time) {
     time *= 0.001;
+
+
 
     cubes.forEach((cube, ndx) => {
       const speed = 1 + ndx * .1;
@@ -53,6 +67,12 @@ function main() {
       cube.rotation.x = rot;
       cube.rotation.y = rot;
     });
+
+    if (resizeRendererToDisplaySize(renderer)) {
+    const canvas = renderer.domElement;
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+    camera.updateProjectionMatrix();
+  }
 
     renderer.render(scene, camera);
 

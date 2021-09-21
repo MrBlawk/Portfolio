@@ -23,7 +23,15 @@ function handleTurn(event)
 
 board[idx] = turn;
 
-console.log(board);
+if (turn === 'X'){
+    turn = 'O'
+} 
+else {
+    turn = 'X'
+};
+
+render();
+//console.log(board);
 
 };
 

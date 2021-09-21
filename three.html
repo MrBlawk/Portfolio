@@ -13,7 +13,7 @@ function resizeRendererToDisplaySize(renderer) {
 }
 
 function main() {
-    const canvas = document.querySelector('#c');
+  const canvas = document.querySelector('#c');
   const renderer = new THREE.WebGLRenderer({canvas});
 
   const fov = 60;
@@ -31,16 +31,20 @@ function main() {
     const light = new THREE.DirectionalLight(color, intensity);
     light.position.set(-1, 2, 4);
     scene.add(light);
+    
   }
 
+
+  
   const radius = 1;
-  const detail = 2;
+  const detail = 50;
   
   const geometry = new THREE.DodecahedronGeometry(radius, detail);
 
   function makeInstance(geometry, color, x) {
-    const material = new THREE.MeshPhongMaterial({color});
 
+    const texture = new THREE.TextureLoader().load('textures/earth.jfif');
+    const material = new THREE.MeshPhongMaterial({map: texture});
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
@@ -52,21 +56,23 @@ function main() {
 
   const cubes = [
     makeInstance(geometry, 0x70ABAF,  0),
-    makeInstance(geometry, 0xF0F7F4, -2),
-    makeInstance(geometry, 0x32292F,  2),
+
   ];
 
   function render(time) {
-    time *= 0.001;
+    time *= 0.0001;
 
 
 
     cubes.forEach((cube, ndx) => {
       const speed = 1 + ndx * .1;
       const rot = time * speed;
+      const float = time * speed;
       cube.rotation.x = rot;
       cube.rotation.y = rot;
+      
     });
+
 
     if (resizeRendererToDisplaySize(renderer)) {
     const canvas = renderer.domElement;
@@ -88,6 +94,7 @@ main();
 
 <body>
     <canvas id="c"></canvas>
+    <script src="/js/_dist-editor.js?4f287857844739d6d264eabc1db0b16435203efd"></script>
 </body>
 
 <style>

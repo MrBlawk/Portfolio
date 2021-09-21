@@ -6,28 +6,136 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <title>Kies je game</title>
+        <title>Kies je demo</title>
     </head>
 
     <body>
-        <h1>Kies je game</h1>
+        <div id="overlay" style="background:scroll">
+            <h1>Kies je demo</h1>
 
-        <div>
-            <form action="index.html">
-                <button>Tic Tac Toe</button>
-                </form>
+            <div>
+                <form action="index.html">
+                    <button>Tic Tac Toe</button>
+                    </form>
+            </div>
+
+            <div>
+                <form action="three.html">
+                    <button>View Earth</button>
+                    </form>
+            </div>
         </div>
 
-        <div>
-            <form action="three.html">
-                <button>3D viewer</button>
-                </form>
-        </div>
+        <canvas id="c"></canvas>
     </body>
 
-    <style>
-        body{
+    <script type="module">
+        import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
+        
+        function resizeRendererToDisplaySize(renderer) {
+          const canvas = renderer.domElement;
+          const width = canvas.clientWidth;
+          const height = canvas.clientHeight;
+          const needResize = canvas.width !== width || canvas.height !== height;
+          if (needResize) {
+            renderer.setSize(width, height, false);
+          }
+          return needResize;
+        }
+        
+        function main() {
+          const canvas = document.querySelector('#c');
+          const renderer = new THREE.WebGLRenderer({canvas});
+        
+          const fov = 60;
+          const aspect = 1;  // the canvas default
+          const near = 0.1;
+          const far = 5;
+          const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+          camera.position.z = 2;
+        
+          const scene = new THREE.Scene();
+        
+          {
+            const color = 0xFFFFFF;
+            const intensity = 1;
+            const light = new THREE.DirectionalLight(color, intensity);
+            light.position.set(-1, 2, 4);
+            scene.add(light);
+            
+          }
+        
+        
+          
+          const radius = 1;
+          const detail = 50;
+          
+          const geometry = new THREE.DodecahedronGeometry(radius, detail);
+        
+          function makeInstance(geometry, color, x) {
+        
+            const texture = new THREE.TextureLoader().load('textures/earth.jfif');
+            const material = new THREE.MeshPhongMaterial({map: texture});
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+        
+            cube.position.x = 0;
+            cube.position.z = -1;
+        
+            return cube;
+          }
+        
+          const cubes = [
+            makeInstance(geometry, 0x70ABAF,  0),
+        
+          ];
+        
+          function render(time) {
+            time *= 0.0001;
+        
+        
+        
+            cubes.forEach((cube, ndx) => {
+              const speed = 1 + ndx * .1;
+              const rot = time * speed;
+              const float = time * speed;
+              cube.rotation.x = rot;
+              cube.rotation.y = rot;
+              
+            });
+        
+        
+            if (resizeRendererToDisplaySize(renderer)) {
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+          }
+        
+            renderer.render(scene, camera);
+        
+            requestAnimationFrame(render);
+          }
+        
+          requestAnimationFrame(render);
+        }
+        
+        main();
+        
+        </script>
+        
 
+        
+
+    <style>
+        #overlay img{
+            background-image: url(textures/bg.jpg);
+            opacity:1;
+            background-size: contain;
+        }
+
+        body{
+            color: white;
+            background-color: black;
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
         }
@@ -40,8 +148,16 @@
             width: 120px;
             margin: 10px;
         }
+
+
+        html, body{
+                margin: 0;
+                height: 100%;
+            }
+            #c {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
     </style>
 
-    <script>
-        
-    </script>

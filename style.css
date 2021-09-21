@@ -36,6 +36,7 @@ width: 432px;
 
 .square
 {
+font-family: "Lucida Console";
 line-height: 5;
 font-size: xx-large;
 border: 2px solid rgba(0, 255, 42, 0.637);

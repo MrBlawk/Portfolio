@@ -18,7 +18,6 @@ function handleTurn(event)
 {
     let idx = squares.findIndex(function(square) {
         return square === event.target;
-
     });
 
 board[idx] = turn;
@@ -32,31 +31,26 @@ else {
 
 render();
 //console.log(board);
-
 };
 
 function init(){
     board = [
         '', '', '',
-'', '', '',
-'', '', ''
-];
+        '', '', '',
+        '', '', ''
+    ];
+
 render();
+
 };
+
 init();
 
  function render(){
- 
-
         board.forEach(function(mark, index){
         squares[index].textContent = mark;
         console.log(mark, index);
-
-        
-
-        });
-
-
- };
+    });
+};
 
  

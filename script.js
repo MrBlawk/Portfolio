@@ -16,8 +16,12 @@ function init(){
 '', '', '',
 '', '', ''
 ];
+
 render();
+
 };
+
+
  init();
 
  function render(){

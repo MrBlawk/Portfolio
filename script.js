@@ -4,12 +4,24 @@
 
 let board;
 
+let turn = 'X';
+
 /* cached element references */
 const squares = Array.from(document.querySelectorAll('#board div'));
 
 /* event listeners */
+document.getElementById('board').addEventListener('click', handleTurn);
+
 
 /* functions */ 
+function handleTurn(event)
+{
+    let idx = squares.findIndex(function(square) {
+        return square === event.target;
+
+    });
+
+};
 
 function init(){
     board = [

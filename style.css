@@ -1,5 +1,6 @@
 body {
-    
+    color: white;
+    background-color: black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -46,9 +47,11 @@ width: 140px;
 
 #reset-button
 {
+    color: white;
+    background-color: black;
     text-align: center;
     font-size: 20px;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     height: 55px;
     width: 100px;
     margin: 10px;

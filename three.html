@@ -1,5 +1,8 @@
+   <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+		<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
 <script type="module">
-import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
+
 
 function resizeRendererToDisplaySize(renderer) {
   const canvas = renderer.domElement;
@@ -19,59 +22,47 @@ function main() {
   const fov = 60;
   const aspect = 1;  // the canvas default
   const near = 0.1;
-  const far = 5;
+  const far = 10;
   const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-  camera.position.z = 2;
+  camera.position.z = 10;
 
   const scene = new THREE.Scene();
+  makeInstance();
 
   {
     const color = 0xFFFFFF;
     const intensity = 1;
     const light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(-1, 2, 4);
-    scene.add(light);
-    
+    const amLight = new THREE.AmbientLight(color, intensity)
+    light.position.set(0,5,0);
+    amLight.position.set(0,5,0);
+    scene.add(amLight)
+    scene.add(light); 
   }
 
 
-  
-  const radius = 1;
-  const detail = 50;
-  
-  const geometry = new THREE.DodecahedronGeometry(radius, detail);
+  function makeInstance() {
 
-  function makeInstance(geometry, color, x) {
-
-    const texture = new THREE.TextureLoader().load('textures/earth.jfif');
-    const material = new THREE.MeshPhongMaterial({map: texture});
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    cube.position.x = 0;
-    cube.position.z = -1;
-
-    return cube;
+    var loader = new THREE.GLTFLoader();
+    loader.load('models/Earth.glb', function(gltf){
+      
+      scene.add(gltf.scene);
+      renderer.render(scene, camera);
+    },
+    undefined,
+    function(error){
+      console.error(error);
+    });
   }
 
-  const cubes = [
-    makeInstance(geometry, 0x70ABAF,  0),
 
-  ];
 
   function render(time) {
     time *= 0.0001;
 
 
 
-    cubes.forEach((cube, ndx) => {
-      const speed = 1 + ndx * .1;
-      const rot = time * speed;
-      const float = time * speed;
-      cube.rotation.x = rot;
-      cube.rotation.y = rot;
-      
-    });
+
 
 
     if (resizeRendererToDisplaySize(renderer)) {
@@ -94,7 +85,7 @@ main();
 
 <body>
     <canvas id="c"></canvas>
-    <script src="/js/_dist-editor.js?4f287857844739d6d264eabc1db0b16435203efd"></script>
+ 
 </body>
 
 <style>

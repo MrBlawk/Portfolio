@@ -4,7 +4,6 @@
 
 <script type="module">
 
-
 function resizeRendererToDisplaySize(renderer) {
   const canvas = renderer.domElement;
   const width = canvas.clientWidth;
@@ -14,6 +13,17 @@ function resizeRendererToDisplaySize(renderer) {
     renderer.setSize(width, height, false);
   }
   return needResize;
+}
+
+function updateLightPosition(renderer){
+  const xPos = light.position.x;
+  const yPos = light.position.y;
+  const zPos = light.position.z;
+  const needPosUpdate = camera.position.x !== xPos || camera.position.y !== xPos || camera.position.z !== zPos;
+  if(needPosUpdate){
+    renderer.light.position.set(camera.position.x, camera.position.y, camera.position.z)
+  }
+  return needPosUpdate;
 }
 
 function main() {
@@ -30,27 +40,27 @@ function main() {
   scene = new THREE.Scene();
 
   let controls = new THREE.OrbitControls(camera, renderer.domElement);
+  
   controls.addEventListener('change', renderer)
 
 
   makeInstance();
 
-
-
   {
     const color = 0xFFFFFF;
     const intensity = 1;
     const light = new THREE.DirectionalLight(color, intensity);
+    const controlLight = new THREE.OrbitControls(light, renderer.domElement);
     const amLight = new THREE.AmbientLight(color, intensity)
-    light.position.set(0,5,0);
+    
+    //light.position.set(0,5,0);
     amLight.position.set(0,5,0);
     scene.add(amLight)
     scene.add(light); 
   }
-
+  
 
   function makeInstance() {
-
     var loader = new THREE.GLTFLoader();
     loader.load('models/Earth.glb', function(gltf){
       
@@ -63,7 +73,9 @@ function main() {
     });
   }
 
+  
 
+  
 
   function render(time) {
     time *= 0.001;
@@ -73,12 +85,16 @@ function main() {
     const canvas = renderer.domElement;
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
+
   }
 
     renderer.render(scene, camera);
-
+  
     requestAnimationFrame(render);
   }
+
+  
+  
   
 
   requestAnimationFrame(render);
@@ -88,8 +104,13 @@ main();
 
 </script>
 
+
 <body>
-    <canvas id="c"></canvas>
+    <canvas id="c">
+        <div class="rangeslider">
+          <input type="range" min="1" max="100" value="10" class="myslider" id="sliderRange">
+        </div>
+    </canvas>
  
 </body>
 
@@ -103,4 +124,7 @@ main();
         height: 100%;
         display: block;
     }
+
+   
 </style>
+

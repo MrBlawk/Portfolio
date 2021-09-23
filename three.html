@@ -48,14 +48,15 @@ function main() {
 
   {
     const color = 0xFFFFFF;
-    const intensity = 2;
+    const intensity = .1;
     const light = new THREE.DirectionalLight(color, 2);
     const controlLight = new THREE.OrbitControls(light, renderer.domElement);
+
     const amLight = new THREE.AmbientLight(color, intensity)
     
-    //light.position.set(0,5,0);
+    light.position.set(5,.5,3);
     amLight.position.set(0,5,0);
-    //scene.add(amLight)
+    scene.add(amLight)
     scene.add(light); 
   }
   
@@ -65,10 +66,12 @@ function main() {
     loader.load('models/Earth.glb', (gltf) => {
       
       scene.add(gltf.scene);
+
       gltf.scene.traverse(child => {
         if(child.isMesh){
           child.castShadow = true;
           child.receiveShadow = true;
+          child.rotation.x = -.1;
 
           if(child.material.map){
             child.material.map.anisotropy = 8;
@@ -89,10 +92,6 @@ function main() {
     makeInstance()
   ];
 
-
-
-  
-
   function render(time) {
     time *= 0.0001;
 
@@ -111,9 +110,6 @@ function main() {
     requestAnimationFrame(render);
   }
 
-  
-  
-  
   //skybox stuff
   //settingup the materialarray and defining the textures to a let.
   let materialArray = [];
@@ -145,9 +141,6 @@ function main() {
   {
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
-
-
-
   }
 
   requestAnimationFrame(render);
@@ -178,6 +171,4 @@ main();
         height: 100%;
         display: block;
     }
-
-   
 </style>

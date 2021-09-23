@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FPS Trial Game</title>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  
+    
+</head>
+
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+
+<body>
+<script type="module">
+
+
+function Main()
+{
+
+
+    //resizer
+    function resizeRendererToDisplaySize(renderer) {
+    const canvas = renderer.domElement;
+    const width = canvas.clientWidth;
+    const height = canvas.clientHeight;
+    const needResize = canvas.width !== width || canvas.height !== height;
+    if (needResize) {
+        renderer.setSize(width, height, false);
+    }
+    return needResize;
+    }
+
+
+
+    function render(time) {
+        time *= 0.001;
+    
+
+
+
+        const canvas = renderer.domElement;
+
+    
+        if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+    }
+
+        renderer.render(scene, camera);
+
+        requestAnimationFrame(render);
+    }
+
+
+
+
+
+}
+
+
+
+
+
+
+</script>
+
+
+
+
+</body>
+
+
+
+
+
+</html>

@@ -31,12 +31,13 @@ function main() {
 
   let controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.addEventListener('change', renderer)
+  controls.minDistance = 10;
+  controls.maxDistance = 90;
 
 
   makeInstance();
 
-
-
+  //lights 
   {
     const color = 0xFFFFFF;
     const intensity = 1;
@@ -56,6 +57,9 @@ function main() {
       
       scene.add(gltf.scene);
       renderer.render(scene, camera);
+      
+   
+ 
     },
     undefined,
     function(error){
@@ -64,9 +68,13 @@ function main() {
   }
 
 
-
-  function render(time) {
+  function render(time,geometry) {
     time *= 0.001;
+   
+
+
+
+    const canvas = renderer.domElement;
 
  
     if (resizeRendererToDisplaySize(renderer)) {
@@ -80,11 +88,45 @@ function main() {
     requestAnimationFrame(render);
   }
   
+  //skybox stuff
+  let materialArray = [];
+  let texture_ft = new THREE.TextureLoader().load('galaxy_ft.jpg');
+  let texture_rt = new THREE.TextureLoader().load('galaxy_rt.jpg');
+  let texture_lt = new THREE.TextureLoader().load('galaxy_lt.jpg');
+  let texture_up = new THREE.TextureLoader().load('galaxy_up.jpg');
+  let texture_dwn = new THREE.TextureLoader().load('galaxy_dwn.jpg');
+  let texture_bk = new THREE.TextureLoader().load('galaxy_bk.jpg');
+
+  materialArray.push(new THREE.MeshBasicMaterial({map: texture_ft}));
+  materialArray.push(new THREE.MeshBasicMaterial({map: texture_rt}));
+  materialArray.push(new THREE.MeshBasicMaterial({map: texture_lt}));
+  materialArray.push(new THREE.MeshBasicMaterial({map: texture_up}));
+  materialArray.push(new THREE.MeshBasicMaterial({map: texture_dwn}));
+  materialArray.push(new THREE.MeshBasicMaterial({map: texture_bk}));
+
+  for(let i=0;i<6;i++)
+    materialArray[i].side = THREE.BackSide;
+
+  let skyboxGeo = new THREE.BoxGeometry(100,100,100);
+  let skybox = new THREE.Mesh(skyboxGeo,materialArray);
+  scene.add(skybox);
+  
+  animate();
+
+  function animate()
+  {
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+
+
+
+  }
 
   requestAnimationFrame(render);
 }
 
 main();
+
 
 </script>
 

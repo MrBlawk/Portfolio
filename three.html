@@ -21,7 +21,7 @@ function main() {
   let scene, camera;
   
   const canvas = document.querySelector('#c');
-  let renderer = new THREE.WebGLRenderer({canvas});
+  let renderer = new THREE.WebGLRenderer({canvas, antialias: true});
 
 
   camera = new THREE.PerspectiveCamera(40,window.innerWidth/window.innerHeight,1,5000);

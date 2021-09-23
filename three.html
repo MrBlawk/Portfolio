@@ -1,8 +1,10 @@
-   <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
-	 <script src="https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-   <script src="https://82mou.github.io/threejs/js/OrbitControls.js"></script>
+
 
 <script type="module">
+import * as THREE from 'https://cdn.skypack.dev/three';
+import { GLTFLoader } from 'https://cdn.skypack.dev/three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
+import { Octree } from 'https://cdn.skypack.dev/three/examples/jsm/math/Octree.js';
 
 function resizeRendererToDisplaySize(renderer) {
   const canvas = renderer.domElement;
@@ -39,7 +41,7 @@ function main() {
  
   scene = new THREE.Scene();
 
-  let controls = new THREE.OrbitControls(camera, renderer.domElement);
+  let controls = new OrbitControls(camera, renderer.domElement);
   
   controls.addEventListener('change', renderer)
   controls.minDistance = 10;
@@ -50,7 +52,7 @@ function main() {
     const color = 0xFFFFFF;
     const intensity = .1;
     const light = new THREE.DirectionalLight(color, 2);
-    const controlLight = new THREE.OrbitControls(light, renderer.domElement);
+    const controlLight = new OrbitControls(light, renderer.domElement);
 
     const amLight = new THREE.AmbientLight(color, intensity)
     
@@ -62,7 +64,7 @@ function main() {
   
 
   function makeInstance() {
-    var loader = new THREE.GLTFLoader();
+    var loader = new GLTFLoader();
     loader.load('models/Earth.glb', (gltf) => {
       
       scene.add(gltf.scene);

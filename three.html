@@ -48,27 +48,36 @@ function main() {
 
   {
     const color = 0xFFFFFF;
-    const intensity = 1;
-    const light = new THREE.DirectionalLight(color, intensity);
+    const intensity = 2;
+    const light = new THREE.DirectionalLight(color, 2);
     const controlLight = new THREE.OrbitControls(light, renderer.domElement);
     const amLight = new THREE.AmbientLight(color, intensity)
     
     //light.position.set(0,5,0);
     amLight.position.set(0,5,0);
-    scene.add(amLight)
+    //scene.add(amLight)
     scene.add(light); 
   }
   
 
   function makeInstance() {
     var loader = new THREE.GLTFLoader();
-    loader.load('models/Earth.glb', function(gltf){
+    loader.load('models/Earth.glb', (gltf) => {
       
       scene.add(gltf.scene);
+      gltf.scene.traverse(child => {
+        if(child.isMesh){
+          child.castShadow = true;
+          child.receiveShadow = true;
+
+          if(child.material.map){
+            child.material.map.anisotropy = 8;
+          }
+        }
+      })
+
       renderer.render(scene, camera);
-      
-   
- 
+
     },
     undefined,
     function(error){
@@ -80,9 +89,7 @@ function main() {
     makeInstance()
   ];
 
-  function render(time) {
-    time *= 0.001;
-   
+
 
   
 
@@ -174,4 +181,3 @@ main();
 
    
 </style>
-

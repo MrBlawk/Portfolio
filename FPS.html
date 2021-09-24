@@ -58,8 +58,11 @@ function Main()
     {
         const color = 0x6688cc;
         const intensity = 1;
+        const spotIntensity = 2;
         const ambientlight = new THREE.AmbientLight( color, intensity );
-        scene.add( ambientlight );
+        const light = new THREE.SpotLight(color, spotIntensity);
+        light.position.set(50,50,1)
+        scene.add(  light, ambientlight );
     }
 
     const plane = new THREE.Mesh(
@@ -72,16 +75,26 @@ function Main()
         plane.rotation.x = -Math.PI / 2;
         scene.add(plane);
 
-    const wall = new THREE.Mesh(
+
+
+    function MakeWallInstance(location){
+        const wall = new THREE.Mesh(
         new THREE.BoxGeometry(10,5,1,1),
         new THREE.MeshStandardMaterial({
             color: 0xFFFFFF
         }));
         wall.castShadow = true;
         wall.receiveShadow = true;
-        wall.position.set(0,2.5,0)
-    scene.add(wall);
-   
+        wall.position.set(location,2.5, 0)
+        scene.add(wall);
+    }
+
+    for(let i = 0; i < 5 ; i++)
+    {
+        let spawnPos = i * 50;
+        MakeWallInstance(spawnPos);
+    }
+
     function render(time) {
         time *= 0.001;
     

@@ -22,41 +22,44 @@ import { Octree } from 'https://cdn.skypack.dev/three/examples/jsm/math/Octree.j
 import { Capsule } from 'https://cdn.skypack.dev/three/examples/jsm/math/Capsule.js';
 
 
+//resizer
+function resizeRendererToDisplaySize(renderer) {
+const canvas = renderer.domElement;
+const width = canvas.clientWidth;
+const height = canvas.clientHeight;
+const needResize = canvas.width !== width || canvas.height !== height;
+if (needResize) {
+    renderer.setSize(width, height, false);
+}
+return needResize;
+}
+
 function Main()
 {
+    let scene, camera;
 
+    const canvas = document.querySelector('#c');
+    let renderer = new THREE.WebGLRenderer(({canvas, antialias: true}));
+
+    //const Octree = new Octree();
    
-
-
-    const Octree = new Octree();
    
-   
-    const clock = new THREE.Clock();
+    //const clock = new THREE.Clock();
 
-    const scene = new THREE.Scene();
+    scene = new THREE.Scene();
     scene.background = new THREE.Color( 0x88ccff );
 
-    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-	//camera.rotation.order = 'YXZ';
-
-	const ambientlight = new THREE.AmbientLight( 0x6688cc );
-	scene.add( ambientlight );
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+	camera.position.z = -10;
+    //camera.rotation.order = 'YXZ';
+    {
+        const color = 0x6688cc;
+        const intensity = 1;
+        const ambientlight = new THREE.AmbientLight( color, intensity );
+        scene.add( ambientlight );
+    }
 
    
-    //resizer
-    function resizeRendererToDisplaySize(renderer) {
-    const canvas = renderer.domElement;
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-    const needResize = canvas.width !== width || canvas.height !== height;
-    if (needResize) {
-        renderer.setSize(width, height, false);
-    }
-    return needResize;
-    }
-
-
-
     function render(time) {
         time *= 0.001;
     
@@ -75,25 +78,39 @@ function Main()
     }
 
 
+    requestAnimationFrame(render);
 
 
+    animate();
+
+    function animate()
+    {
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(render);
 
 }
 
-
-
-
-
+Main();
 
 </script>
 
-
+<canvas id="c"></canvas>
 
 
 </body>
-
-
-
-
-
 </html>
+
+<style>
+    html, body{
+        margin: 0;
+        height: 100%;
+    }
+    #c {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+</style>

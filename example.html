@@ -9,6 +9,29 @@
     <script src="/import/GLTFLoader.js"></script>
     <script src="/import/OrbitControls.js"></script>
     <script>
+
+      var message = "Trying to steal the code, eh? System is logging your IP.";
+
+      function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
+
+      if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
+
+      document.onmousedown = rtclickcheck;
+
+      document.onkeydown = function(e) {
+              if (e.ctrlKey && 
+                  (e.keyCode === 67 || 
+                  e.keyCode === 86 || 
+                  e.keyCode === 85 || 
+                  e.keyCode === 117)) {
+                  alert('Trying to steal the code, eh? System is logging your IP.');
+                  return false;
+              } else {
+                  return true;
+              }
+      };
+
+
       let scene, camera, renderer;
 
       function init() {

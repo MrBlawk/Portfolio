@@ -6,6 +6,21 @@ import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.132.0/examples/jsm/l
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.132.0/examples/jsm/controls/OrbitControls.js';
 import { Octree } from 'https://cdn.skypack.dev/three@0.132.0/examples/jsm/math/Octree.js';
 
+
+
+document.onkeydown = function(e) {
+        if (e.ctrlKey && 
+            (e.keyCode === 67 || 
+             e.keyCode === 86 || 
+             e.keyCode === 85 || 
+             e.keyCode === 117)) {
+            alert('Trying to steal the code, eh? System is logging your IP.');
+            return false;
+        } else {
+            return true;
+        }
+};
+
 function resizeRendererToDisplaySize(renderer) {
   const canvas = renderer.domElement;
   const width = canvas.clientWidth;

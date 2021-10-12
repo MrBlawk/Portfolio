@@ -6,7 +6,6 @@
     <meta charset=utf-8 />
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   
-    
 </head>
 
 
@@ -18,6 +17,7 @@
     
 import * as THREE from 'https://cdn.skypack.dev/three@0.132.0';
 import { OrbitControls } from 'https://cdn.skypack.dev/three@0.132.0/examples/jsm/controls/OrbitControls.js';
+import { FirstPersonControls } from 'https://cdn.skypack.dev/three@0.132.0/examples/jsm/controls/FirstPersonControls.js';
 import { Octree } from 'https://cdn.skypack.dev/three@0.132.0/examples/jsm/math/Octree.js';
 import { Capsule } from 'https://cdn.skypack.dev/three@0.132.0/examples/jsm/math/Capsule.js';
 
@@ -49,11 +49,11 @@ function Main()
     scene.background = new THREE.Color( 0x88ccff );
 
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 5000 );
-	camera.position.set(75,20,0);
+	camera.position.set(5,2,0);
     //camera.rotation.order = 'YXZ';
 
-    let controls = new OrbitControls(camera, renderer.domElement);
-    controls.target.set(0,0,0);
+    //let controls = new OrbitControls(camera, renderer.domElement);
+    //controls.target.set(0,0,0);
 
 
     {
@@ -76,9 +76,17 @@ function Main()
         plane.rotation.x = -Math.PI / 2;
         scene.add(plane);
 
-
-
-    
+    const dak = new THREE.Mesh(
+        new THREE.BoxGeometry(11,0.5,14),
+        new THREE.MeshStandardMaterial({
+            color: 0x484848
+        }));
+        dak.castShadow = true;
+        dak.receiveShadow = true;
+        dak.position.set(0,5.2,6.5)
+        dak.rotation.x = -Math.PI / 1;
+        scene.add(dak);
+      
     function MakeWallInstance(x,y,z,r){
         const wall = new THREE.Mesh(
         new THREE.BoxGeometry(10,5,1,10),
@@ -100,15 +108,38 @@ function Main()
     MakeWallInstance(0,2.5,0, 0);
     MakeWallInstance(4.5,2.5,5, Math.PI/2);
     MakeWallInstance(-4.5, 2.5, 5, Math.PI/2);
-    MakeWallInstance(0,2.5,10,0);
+    MakeWallInstance(0,2.5,12,0);
+
+    var camControls = new FirstPersonControls(camera, renderer.domElement);
+    camControls.lookSpeed = 100;
+    camControls.movementSpeed = 1000;
+    camControls.noFly = true;
+    camControls.lookVertical = true;
+    camControls.constrainVertical = true;
+    camControls.verticalMin = 1.0;
+    camControls.verticalMax = 2.0;
+    
+
+    var controls = new function () {
+            // we need the first child, since it's a multimaterial
+
+
+        };
+
+    function setCamControls() {
+
+    }
+
 
     
 
     function render(time) {
         time *= 0.001;
+
     
         const canvas = renderer.domElement;
 
+        camControls.update(0.00001);
     
         if (resizeRendererToDisplaySize(renderer)) {
         const canvas = renderer.domElement;

@@ -97,6 +97,30 @@
 
 
 <script>
+
+//document.addEventListener('contextmenu', event => event.preventDefault());
+
+var message = "Trying to steal the code, eh? System is logging your IP.";
+
+function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
+
+if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
+
+document.onmousedown = rtclickcheck;
+
+document.onkeydown = function(e) {
+        if (e.ctrlKey && 
+            (e.keyCode === 67 || 
+             e.keyCode === 86 || 
+             e.keyCode === 85 || 
+             e.keyCode === 117)) {
+            alert('Trying to steal the code, eh? System is logging your IP.');
+            return false;
+        } else {
+            return true;
+        }
+};
+
 let proxy = { skew: 0 },
     skewSetter = gsap.quickSetter(".skewElem", "skewY", "deg"), // fast
     clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees. 
@@ -134,4 +158,6 @@ gsap.utils.toArray(".comparisonSection").forEach(section => {
 	  // ...and the image the opposite way (at the same time)
 	  .fromTo(section.querySelector(".afterImage img"), {xPercent: -100, x: 0}, {xPercent: 0}, 0);
 });
+
+
 </script>

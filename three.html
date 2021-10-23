@@ -80,7 +80,7 @@ function main() {
 
   function makeInstance() {
     var loader = new GLTFLoader();
-    loader.load('models/Earth.glb', (gltf) => {
+    loader.load('modellen/Earth.glb', (gltf) => {
       
       scene.add(gltf.scene);
 
@@ -130,12 +130,12 @@ function main() {
   //skybox stuff
   //settingup the materialarray and defining the textures to a let.
   let materialArray = [];
-  let texture_ft = new THREE.TextureLoader().load('galaxy_ft.jpg');
-  let texture_rt = new THREE.TextureLoader().load('galaxy_rt.jpg');
-  let texture_lt = new THREE.TextureLoader().load('galaxy_lt.jpg');
-  let texture_up = new THREE.TextureLoader().load('galaxy_up.jpg');
-  let texture_dwn = new THREE.TextureLoader().load('galaxy_dwn.jpg');
-  let texture_bk = new THREE.TextureLoader().load('galaxy_bk.jpg');
+  let texture_ft = new THREE.TextureLoader().load('texture/galaxy_ft.jpg');
+  let texture_rt = new THREE.TextureLoader().load('texture/galaxy_rt.jpg');
+  let texture_lt = new THREE.TextureLoader().load('texture/galaxy_lt.jpg');
+  let texture_up = new THREE.TextureLoader().load('texture/galaxy_up.jpg');
+  let texture_dwn = new THREE.TextureLoader().load('texture/galaxy_dwn.jpg');
+  let texture_bk = new THREE.TextureLoader().load('texture/galaxy_bk.jpg');
 
   //pushing the materials to the array.
   materialArray.push(new THREE.MeshBasicMaterial({map: texture_ft}));

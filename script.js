@@ -1,6 +1,6 @@
 /* Constants */
 
-var message = "Trying to steal the code, eh? System is logging your IP.";
+var message = "Trying to steal the code, eh?";
 
 function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
 
@@ -14,7 +14,7 @@ document.onkeydown = function(e) {
              e.keyCode === 86 || 
              e.keyCode === 85 || 
              e.keyCode === 117)) {
-            alert('Trying to steal the code, eh? System is logging your IP.');
+            alert('Trying to steal the code, eh?');
             return false;
         } else {
             return true;

@@ -44,7 +44,7 @@
     <script src="/import/OrbitControls.js"></script>
 
     <script>
-      var message = "Trying to steal the code, eh? System is logging your IP.";
+      var message = "Trying to steal the code, eh?";
 
       function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
 
@@ -58,7 +58,7 @@
                   e.keyCode === 86 || 
                   e.keyCode === 85 || 
                   e.keyCode === 117)) {
-                  alert('Trying to steal the code, eh? System is logging your IP.');
+                  alert('Trying to steal the code, eh?');
                   return false;
               } else {
                   return true;
@@ -114,7 +114,7 @@
         
           function makeInstance(geometry, color, x) {
         
-            const texture = new THREE.TextureLoader().load('textures/earth.jfif');
+            const texture = new THREE.TextureLoader().load('texture/earth.jfif');
             const material = new THREE.MeshPhongMaterial({map: texture});
             const cube = new THREE.Mesh(geometry, material);
             scene.add(cube);

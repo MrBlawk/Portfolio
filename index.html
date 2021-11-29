@@ -13,56 +13,57 @@
         <div id="overlay" style="background:scroll">
             <h1>Portfolio Stijn Timmerman</h1>
 
-            <div>
+            <div class="form">
               <form action="https://blawk.jimdofree.com/blog/">
                   <button>Personal Blog</button>
                   </form>
           </div>
 
-            <div>
+            <div class="form">
                 <form action="three.html">
                     <button>View Earth</button>
                     </form>
             </div>
 
-            <div>
+            <div class="form">
               <form action="car.html">
                   <button>3rd person car</button>
                   </form>
           </div>
 
-            <div>
+            <div class="form">
               <form action="FPS.html">
                   <button>First person!</button>
                   </form>
           </div>
 
-          <div>
+          <div class="form">
             <form action="triggertest.html">
                 <button>Scrolltrigger portfolio</button>
                 </form>
           </div>
 
-          <div>
+          <div class="form">
             <form action="https://cmd-leeuwarden.vercel.app/">
                 <button>Project CMD-Leeuwarden</button>
                 </form>
           </div>
 
-          <div>
+          <div class="form">
             <form action="https://w0lffster.github.io/ElisaTeigeler/">
                 <button>Portfolio for artist</button>
                 </form>
           </div>
 
-          <div>
+          <div class="form">
             <form action="https://blawk.itch.io/flu-fighter-2021">
                 <button>Gamejam</button>
                 </form>
           </div>
         </div>
 
-        <canvas id="c"></canvas>
+        <canvas id="c">
+        </canvas>
     </body>
 
     <script src="/import/OrbitControls.js"></script>
@@ -184,7 +185,6 @@
             color: white;
             background-color: black;
             text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
         }
 
         button{
@@ -199,6 +199,10 @@
             border-radius: 12px;
             color: white;
             word-wrap: break-word;
+        }
+
+        .form{
+          display: list-item;
         }
 
 

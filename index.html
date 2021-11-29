@@ -6,18 +6,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <title>Kies je demo</title>
+        <title>Stijn Timmerman</title>
     </head>
 
     <body>
         <div id="overlay" style="background:scroll">
-            <h1>Kies je demo</h1>
+            <h1>Portfolio Stijn Timmerman</h1>
 
             <div>
-                <form action="3oprij.html">
-                    <button>Tic Tac Toe</button>
-                    </form>
-            </div>
+              <form action="https://blawk.jimdofree.com/blog/">
+                  <button>Personal Blog</button>
+                  </form>
+          </div>
 
             <div>
                 <form action="three.html">
@@ -26,22 +26,40 @@
             </div>
 
             <div>
-              <form action="three.html">
+              <form action="car.html">
                   <button>3rd person car</button>
                   </form>
           </div>
 
             <div>
               <form action="FPS.html">
-                  <button>Dit moet een FPS worden</button>
+                  <button>First person!</button>
                   </form>
           </div>
 
           <div>
             <form action="triggertest.html">
-                <button>Scrolltrigger portfolio testing</button>
+                <button>Scrolltrigger portfolio</button>
                 </form>
-        </div>
+          </div>
+
+          <div>
+            <form action="https://cmd-leeuwarden.vercel.app/">
+                <button>Project CMD-Leeuwarden</button>
+                </form>
+          </div>
+
+          <div>
+            <form action="https://w0lffster.github.io/ElisaTeigeler/">
+                <button>Portfolio for artist</button>
+                </form>
+          </div>
+
+          <div>
+            <form action="https://blawk.itch.io/flu-fighter-2021">
+                <button>Gamejam</button>
+                </form>
+          </div>
         </div>
 
         <canvas id="c"></canvas>
@@ -49,28 +67,7 @@
 
     <script src="/import/OrbitControls.js"></script>
 
-    <script>
-      var message = "Trying to steal the code, eh?";
 
-      function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
-
-      if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
-
-      document.onmousedown = rtclickcheck;
-
-      document.onkeydown = function(e) {
-              if (e.ctrlKey && 
-                  (e.keyCode === 67 || 
-                  e.keyCode === 86 || 
-                  e.keyCode === 85 || 
-                  e.keyCode === 117)) {
-                  alert('Trying to steal the code, eh?');
-                  return false;
-              } else {
-                  return true;
-              }
-      };
-    </script>
 
     <script type="module">
         import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
@@ -88,7 +85,8 @@
         
         function main() {
           const canvas = document.querySelector('#c');
-          const renderer = new THREE.WebGLRenderer({canvas});
+          const renderer = new THREE.WebGLRenderer({canvas}, {antialias:true});
+          renderer.setClearColor(0xffa07a, 1);
         
           const fov = 60;
           const aspect = 1;  // the canvas default
@@ -109,10 +107,6 @@
             
           }
 
-
-        
-        
-          
           const radius = 1;
           const detail = 50;
           
@@ -124,6 +118,7 @@
             const material = new THREE.MeshPhongMaterial({map: texture});
             const cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
+            
         
             cube.position.x = 0;
             cube.position.z = -1;
@@ -173,6 +168,12 @@
         
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+        
+        *{
+          font-family: 'Outfit', sans-serif;
+        }
+
         #overlay img{
             background-image: url(textures/bg.jpg);
             opacity:1;
@@ -188,7 +189,7 @@
 
         button{
           
-            background-color: green;
+            background-color: lightseagreen;
             text-align: center;
             font-size: 0.9vw;
             border: none;
@@ -204,11 +205,14 @@
         html, body{
                 margin: 0;
                 height: 100%;
+                background-color: #ffa07a;
             }
             #c {
                 width: 100%;
                 height: 100%;
                 display: block;
+                background-color: #ffa07a;
+;
             }
     </style>
 

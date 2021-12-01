@@ -48,6 +48,8 @@ let userClickedPattern = [];
 let level = 0;
 let started = false;
 
+let volume = 0.1;
+
 $(document).on("keypress", function(){
   if(!started){
         $("#level-title").text("level " + (level))
@@ -79,6 +81,7 @@ function checkAnswer(currentLevel){
     console.log("wrong");
 
     let audio = new Audio("sounds/wrong.mp3");
+    audio.volume = volume;
     audio.play();
 
     $("body").addClass("game-over");
@@ -110,6 +113,7 @@ function nextSequence(){
 
 function playSound(name){
   var audio = new Audio("sounds/" + name + ".mp3");
+  audio.volume = volume;
   audio.play();
 }
 

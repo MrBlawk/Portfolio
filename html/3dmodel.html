@@ -68,7 +68,7 @@
 			document.body.appendChild(renderer.domElement);
 
 			var loader = new THREE.GLTFLoader();
-			loader.load('modellen/Earth.glb', function(gltf) {
+			loader.load('./modellen/Earth.glb', function(gltf) {
 				scene.add(gltf.scene);
 				renderer.render(scene, camera);
 				},

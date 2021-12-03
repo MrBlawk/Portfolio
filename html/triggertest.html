@@ -6,35 +6,35 @@
             <header>
                 <p>Stijn's portfolio?</p>
             </header>
-            <img width="600" height="600" src="./pics/1.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/2.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/3.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/4.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/5.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/6.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/7.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/1.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/2.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/3.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/1.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/2.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/3.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/4.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/5.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/6.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/7.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/1.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/2.jpg" alt="" class="skewElem">
-            <img width="600" height="600" src="./pics/3.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/1.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/2.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/3.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/4.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/5.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/6.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/7.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/1.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/2.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/3.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/1.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/2.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/3.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/4.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/5.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/6.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/7.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/1.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/2.jpg" alt="" class="skewElem">
+            <img width="600" height="600" src="../pics/3.jpg" alt="" class="skewElem">
         </div>
     </section>
 
     <section class="comparisonSection">
         <div class="comparisonImage beforeImage">
-            <img src="./pics/level1.jpg" alt="before">
+            <img src="../pics/level1.jpg" alt="before">
         </div>
         <div class="comparisonImage afterImage">
-            <img src="./pics/level2.jpg" alt="after">
+            <img src="../pics/level2.jpg" alt="after">
         </div>
     </section>
 
@@ -77,13 +77,13 @@
 
         .comparisonSection{
             position: center;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
         }
 
         .comparisonImage{
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
         }
 
         .afterImage{
@@ -114,26 +114,7 @@
 
 //document.addEventListener('contextmenu', event => event.preventDefault());
 
-var message = "Trying to steal the code, eh?";
 
-function rtclickcheck(keyp){ if (navigator.appName == "Netscape" && keyp.which == 3){ alert(message); return false; }
-
-if (navigator.appVersion.indexOf("MSIE") != -1 && event.button == 2) { alert(message); return false; } }
-
-document.onmousedown = rtclickcheck;
-
-document.onkeydown = function(e) {
-        if (e.ctrlKey && 
-            (e.keyCode === 67 || 
-             e.keyCode === 86 || 
-             e.keyCode === 85 || 
-             e.keyCode === 117)) {
-            alert('Trying to steal the code, eh?');
-            return false;
-        } else {
-            return true;
-        }
-};
 
 let proxy = { skew: 0 },
     skewSetter = gsap.quickSetter(".skewElem", "skewY", "deg"), // fast

@@ -47,7 +47,7 @@
 			document.body.appendChild(renderer.domElement);
 
 			var loader = new THREE.ObjectLoader();
-			loader.load('3d_scenes/scene.json', function(obj) {
+			loader.load('../3d_scenes/scene.json', function(obj) {
 				scene.add(obj);
 				renderer.render(scene, camera);
 				},
@@ -82,9 +82,6 @@
 	</html>
 
 	<style>
-
-
-
         html, body{
                 margin: 0;
                 height: 100%;

@@ -1,0 +1,441 @@
+<!--
+    Made with help of the EventsControls script by Vildanov Almaz
+    @author Stijn Timmerman - stijnstijn11@gmail.com
+-->
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- three.js library -->
+    <script src='https://cdn.rawgit.com/jeromeetienne/AR.js/master/three.js/examples/vendor/three.js/build/three.min.js'></script>
+    <!-- ar.js -->
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/master/three.js/build/ar.js"></script>
+    <script>THREEx.ArToolkitContext.baseURL = 'https://cdn.rawgit.com/jeromeetienne/AR.js/master/three.js/examples/'</script>
+    <!-- Events Controls library -->
+    <script src="./import/EventsControls.js"></script>
+
+</head>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+
+
+    <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
+        <h1 style="color: black;">THREE.js + AR.js app demo GGZ Friesland</h1>
+        <button onclick="window.location.href='marina_prototype.html'">
+            Prototype Marina
+        </button>
+        <button onclick="window.location.href='ton_prototype.html'">
+            Prototype Ton
+        </button>
+    </div>
+
+
+
+
+
+<script>
+
+    var scale = 0.7;
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Init renderer and add important params
+    //////////////////////////////////////////////////////////////////////////
+    var renderer = new THREE.WebGLRenderer({
+        antialias : true,
+        alpha : true
+    });
+    renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.domElement.style.position = 'absolute'
+    renderer.domElement.style.top = '0px'
+    renderer.domElement.style.left = '0px'
+    renderer.setPixelRatio(3);
+    renderer.setViewport(0,0,window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Array for all functions that need to be rendered
+    //////////////////////////////////////////////////////////////////////////
+    var onRenderFcts = [];
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Init scene
+    //////////////////////////////////////////////////////////////////////////
+    var scene = new THREE.Scene();
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Init camera with camera params and add to scene
+    //////////////////////////////////////////////////////////////////////////
+    var camera =  new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    scene.add(camera);
+
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Init AR toolkit
+    //////////////////////////////////////////////////////////////////////////
+    var arToolkitSource = new THREEx.ArToolkitSource({
+            sourceType: 'webcam',
+            // sourceWidth: 1920,
+            // sourceHeight: 1080,
+            displayHeight: screen.availHeight,
+            displayWidth: screen.availWidth,
+    })
+    arToolkitSource.init(function onReady(){
+        onResize()
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Event listener that listens on window for resize
+    //////////////////////////////////////////////////////////////////////////
+    window.addEventListener('resize', function(){
+        onResize()
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Function for resizing the window
+    //////////////////////////////////////////////////////////////////////////
+    function onResize(){
+        arToolkitSource.onResizeElement()
+                    arToolkitSource.copyElementSizeTo(renderer.domElement)
+                    setTimeout(function(){
+                        arToolkitSource.onResizeElement()
+                        arToolkitSource.copyElementSizeTo(renderer.domElement)
+                    }, 500);
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Construct ARtoolkit with camera params
+    //////////////////////////////////////////////////////////////////////////
+    var arToolkitContext = new THREEx.ArToolkitContext({
+        cameraParametersUrl: './Assets/Parameters/camera_para.dat',
+        detectionMode: 'mono',
+        canvasWidth: 1920,
+        canvasHeight: 1080,
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Init ARToolkit
+    //////////////////////////////////////////////////////////////////////////
+    arToolkitContext.init(function onCompleted(){
+        camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Add ARToolkit to render array
+    //////////////////////////////////////////////////////////////////////////
+    onRenderFcts.push(function(){
+        if(arToolkitSource.ready === false) return
+        arToolkitContext.update(arToolkitSource.domElement)
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Create markerroot that will check for marker
+    //////////////////////////////////////////////////////////////////////////
+    var markerRoot = new THREE.Group
+    scene.add(markerRoot)
+    //specify .patt file
+    var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot,{
+        type: 'pattern',
+        patternUrl: './Patterns/marker.patt'
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Construct smoothedroot that helps with shaky movement
+    //////////////////////////////////////////////////////////////////////////
+    var smoothedRoot = new THREE.Group()
+    scene.add(smoothedRoot)
+    var smoothedControls = new THREEx.ArSmoothedControls(smoothedRoot, {
+        lerpPosition: 0.1,
+        lerpQuaternion: 0.1,
+        lerpScale: 1,
+        minVisibleDelay: 1,
+        minUnvisibleDelay: 1,
+    })
+    onRenderFcts.push(function(delta){
+        smoothedControls.update(markerRoot)
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             All click events are defined below
+    //////////////////////////////////////////////////////////////////////////
+    // werkenbijggzfriesland slogan click event
+    eventWerkenBijGGZ = new EventsControls(camera,  renderer.domElement);
+    eventWerkenBijGGZ.attachEvent('onclick', function(){
+        console.log("clicked");
+        window.location.href = "https://www.werkenbijggzfriesland.nl/";
+    })
+
+    // website click event
+    eventGGZFriesland = new EventsControls(camera,  renderer.domElement);
+    eventGGZFriesland.attachEvent('onclick', function(){
+        console.log("clicked");
+        window.location.href = "https://www.ggzfriesland.nl/";
+    })
+    // vacancy click event
+    eventVacancies = new EventsControls(camera,  renderer.domElement);
+    eventVacancies.attachEvent('onclick', function(){
+        console.log("clicked");
+        window.location.href = "https://www.werkenbijggzfriesland.nl/vacatures";
+    })
+    // call click event
+    eventCall = new EventsControls(camera,  renderer.domElement);
+    eventCall.attachEvent('onclick', function(){
+        console.log("clicked");
+        window.open("tel:+1234567890")
+    })
+    // message click event
+    eventMessage = new EventsControls(camera,  renderer.domElement);
+    eventMessage.attachEvent('onclick', function(){
+        console.log("clicked");
+        window.location.href = "https://wa.me/${+1234567890}";
+    })
+    // mail click event
+    eventMail = new EventsControls(camera,  renderer.domElement);
+    eventMail.attachEvent('onclick', function(){
+        console.log("clicked");
+        window.location.href='mailto:info@ggzfriesland.nl';
+    })
+    // location click event
+    eventLocation = new EventsControls(camera,  renderer.domElement);
+    eventLocation.attachEvent('onclick', function(){
+        console.log("clicked");
+        window.open('https://www.google.com/maps?q=de+drie+dukatons+15+leeuwarden&um=1&ie=UTF-8&sa=X&ved=2ahUKEwiJicfstbv2AhVD66QKHV71DroQ_AUoAXoECAEQAw'); return false;
+    })
+    // video click event
+    eventVideo = new EventsControls(camera,  renderer.domElement);
+    eventVideo.attachEvent('onclick', function(){
+        console.log("clicked");
+        window.location.href = "https://www.youtube.com/watch?v=yHMVZc_swhg";
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Define 3D Scene root and init image loader
+    //////////////////////////////////////////////////////////////////////////
+    //setting scene root
+    var arWorldRoot = smoothedRoot
+    //declaring loader
+    const loader = new THREE.TextureLoader();
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Text objects created and added (2)
+    //////////////////////////////////////////////////////////////////////////
+    //add object to the scene
+
+    //init plane with logo
+    function createTextPlanes(){
+        const sloganGeometry = new THREE.PlaneGeometry(12 * scale,6 * scale);
+        const sloganMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Tekst_Slogan.png'),
+            transparent: true
+        });
+
+        const quoteGeometry = new THREE.PlaneGeometry(7 * scale,8 * scale);
+        const quoteMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Tekst_Quote.png'),
+            transparent: true
+        });
+
+        const logoGeometry = new THREE.PlaneGeometry(9 * scale,6 * scale);
+        const logoMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Logo_GGZ_Site.png'),
+            transparent: true
+        });
+
+        //////////////////////////////////////////////////////////////////////////
+        ////             create all text meshes
+        //////////////////////////////////////////////////////////////////////////
+        const sloganPlane = new THREE.Mesh(sloganGeometry, sloganMaterial);
+        sloganPlane.position.x = 0 * scale;
+        sloganPlane.position.y = 1.1 * scale;
+        sloganPlane.position.z = 7 * scale;
+        sloganPlane.rotation.x = Math.PI / -2;
+        eventWerkenBijGGZ.attach(sloganPlane);
+
+        const quotePlane = new THREE.Mesh(quoteGeometry, quoteMaterial);
+        quotePlane.position.x = 3 * scale;
+        quotePlane.position.y = 1.1  * scale;
+        quotePlane.position.z = -9  * scale;
+        quotePlane.rotation.x = Math.PI / -2;
+        eventWerkenBijGGZ.attach(quotePlane);
+
+        const logoPlane = new THREE.Mesh(logoGeometry, logoMaterial);
+        logoPlane.position.x = 11  * scale;
+        logoPlane.position.y = 1.1  * scale;
+        logoPlane.position.z = -10  * scale;
+        logoPlane.rotation.x = Math.PI / -2;
+        eventGGZFriesland.attach(logoPlane);
+
+        //adding to root
+        arWorldRoot.add(sloganPlane, quotePlane, logoPlane);
+
+    };
+
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Function to create all meshes
+    //////////////////////////////////////////////////////////////////////////
+    //init planes with small functional icons (phonenumber, mail, etc.)
+    function createCommsIcons(){
+        //create the planes needed for the meshes
+        //////////////////////////////////////////////////////////////////////////
+        ////             Init small buttons (4)
+        //////////////////////////////////////////////////////////////////////////
+        const callGeometry = new THREE.PlaneGeometry(2 * scale,2 * scale);
+        const messageGeometry = new THREE.PlaneGeometry(2 * scale,2 * scale);
+        const mailGeometry = new THREE.PlaneGeometry(2 * scale,2 * scale);
+        const locationGeometry = new THREE.PlaneGeometry(2 * scale,2 * scale);
+
+        //////////////////////////////////////////////////////////////////////////
+        ////             Init big buttons (2)
+        //////////////////////////////////////////////////////////////////////////
+        const webGeometry = new THREE.PlaneGeometry(7 * scale,2 * scale);
+        const vacancyGeometry = new THREE.PlaneGeometry(7 * scale,2 * scale);
+
+        //////////////////////////////////////////////////////////////////////////
+        ////             Init video Button (1)
+        //////////////////////////////////////////////////////////////////////////
+        const videoGeometry = new THREE.PlaneGeometry(7 * scale,13 * scale);
+        //create the materials to be displayed on the meshes
+        //////////////////////////////////////////////////////////////////////////
+        ////             small buttons materials(4)
+        //////////////////////////////////////////////////////////////////////////
+        const callMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Button_Call.png'),
+            transparent: true
+        });
+        const messageMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Button_Chat.png'),
+            transparent: true
+        });
+        const mailMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Button_Mail.png'),
+            transparent: true
+        });
+        const locationMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Button_Maps.png'),
+            transparent: true
+        });
+
+        //////////////////////////////////////////////////////////////////////////
+        ////             big buttons materials(2)
+        //////////////////////////////////////////////////////////////////////////
+        const webMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Button_Site.png'),
+            transparent: true
+        });
+
+        const vacancyMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Button_Vacature.png'),
+            transparent: true
+        });
+
+        //////////////////////////////////////////////////////////////////////////
+        ////             Video button material(1)
+        //////////////////////////////////////////////////////////////////////////
+        const videoMaterial = new THREE.MeshBasicMaterial({
+            map: loader.load('./Assets/Mockup/Youtube_Link.png')
+        })
+        //////////////////////////////////////////////////////////////////////////
+        ////             small buttons meshes(4)
+        //////////////////////////////////////////////////////////////////////////
+        //create the meshes that will be rendered in the given geometry and material, also put them in designed position and rotation.
+        const callPlane = new THREE.Mesh(callGeometry, callMaterial);
+        callPlane.position.x = -6 * scale;
+        callPlane.position.y = 1.1 * scale;
+        callPlane.position.z = 2 * scale;
+        callPlane.rotation.x = Math.PI / -2;
+        eventCall.attach(callPlane);
+        arWorldRoot.add(callPlane);
+
+        const messagePlane = new THREE.Mesh(messageGeometry, messageMaterial);
+        messagePlane.position.x = -2 * scale;
+        messagePlane.position.y = 1.1 * scale;
+        messagePlane.position.z = 2 * scale;
+        messagePlane.rotation.x = Math.PI / -2;
+        eventMessage.attach(messagePlane);
+        arWorldRoot.add(messagePlane);
+
+        const mailPlane = new THREE.Mesh(mailGeometry, mailMaterial);
+        mailPlane.position.x = 2 * scale;
+        mailPlane.position.y = 1.1 * scale;
+        mailPlane.position.z = 2 * scale;
+        mailPlane.rotation.x = Math.PI / -2;
+        eventMail.attach(mailPlane);
+        arWorldRoot.add(mailPlane);
+
+        const locationPlane = new THREE.Mesh(locationGeometry, locationMaterial);
+        locationPlane.position.x = 6 * scale;
+        locationPlane.position.y = 1.1 * scale;
+        locationPlane.position.z = 2 * scale;
+        locationPlane.rotation.x = Math.PI / -2;
+        eventLocation.attach(locationPlane);
+        arWorldRoot.add(locationPlane);
+
+        //////////////////////////////////////////////////////////////////////////
+        ////             big buttons meshes(2)
+        //////////////////////////////////////////////////////////////////////////
+
+        const webPlane = new THREE.Mesh(webGeometry, webMaterial);
+        webPlane.position.x = 3.5 * scale;
+        webPlane.position.y = 1.1 * scale;
+        webPlane.position.z = -4 * scale;
+        webPlane.rotation.x = Math.PI / -2;
+        eventGGZFriesland.attach(webPlane);
+        arWorldRoot.add(webPlane);
+
+
+        const vacancyPlane = new THREE.Mesh(vacancyGeometry, vacancyMaterial);
+        vacancyPlane.position.x = 3.5 * scale;
+        vacancyPlane.position.y = 1.1 * scale;
+        vacancyPlane.position.z = -1 * scale;
+        vacancyPlane.rotation.x = Math.PI / -2;
+        eventVacancies.attach(vacancyPlane);
+            arWorldRoot.add(vacancyPlane);
+
+        //////////////////////////////////////////////////////////////////////////
+        ////             Video button mesh(1)
+        //////////////////////////////////////////////////////////////////////////
+        const videoPlane = new THREE.Mesh(videoGeometry, videoMaterial);
+        videoPlane.position.x = -4 * scale;
+        videoPlane.position.y = 1.1 * scale;
+        videoPlane.position.z = -6 * scale;
+        videoPlane.rotation.x = Math.PI / -2;
+        eventVideo.attach(videoPlane);
+        arWorldRoot.add(videoPlane);
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             Call functions that create the planes with images
+    //////////////////////////////////////////////////////////////////////////
+    //use functions to create objects once
+    createTextPlanes();
+    createCommsIcons();
+
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             add render function to rendering loop
+    //////////////////////////////////////////////////////////////////////////
+    onRenderFcts.push(function(){
+        renderer.render( scene, camera );
+    })
+
+    //////////////////////////////////////////////////////////////////////////
+    ////             3js rendering loop to render scene
+    //////////////////////////////////////////////////////////////////////////
+    var lastTimeMsec= null
+    requestAnimationFrame(function animate(nowMsec){
+        // keep looping
+        requestAnimationFrame( animate );
+        // measure time
+        lastTimeMsec    = lastTimeMsec || nowMsec-1000/60
+        var deltaMsec   = Math.min(200, nowMsec - lastTimeMsec)
+        lastTimeMsec    = nowMsec
+        // render all elements from the array
+        onRenderFcts.forEach(function(onRenderFct){
+            onRenderFct(deltaMsec/1000, nowMsec/1000)
+        })
+    })
+
+</script></body>

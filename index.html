@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
         <title>Stijn Timmerman</title>
     </head>
 
@@ -15,8 +15,8 @@
 
         <div class="btn-row">
             <div class="form">
-              <form action="https://blawk.jimdofree.com/blog/">
-                  <button>Personal Blog</button>
+              <form action="https://www.linkedin.com/in/stijn-timmerman058/">
+                  <button>LinkedIn</button>
                   </form>
           </div>
 
@@ -79,7 +79,7 @@
 
           <div class="form">
             <form action="html/simon.html">
-                <button>---</button>
+                <button>Augmented Reality through your phone!</button></button>
             </form>
           </div>
 
@@ -125,7 +125,7 @@
 
     <script type="module">
         import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
-        
+
         function resizeRendererToDisplaySize(renderer) {
           const canvas = renderer.domElement;
           const width = canvas.clientWidth;
@@ -136,94 +136,94 @@
           }
           return needResize;
         }
-        
+
         function main() {
           const canvas = document.querySelector('#c');
           const renderer = new THREE.WebGLRenderer({canvas}, {antialias:true});
           renderer.setClearColor(0xffa07a, 1);
-        
+
           const fov = 60;
           const aspect = 1;  // the canvas default
           const near = 0.1;
           const far = 5;
           const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
           camera.position.z = 2;
-        
+
           const scene = new THREE.Scene();
-          
-        
+
+
           {
             const color = 0xFFFFFF;
             const intensity = 1;
             const light = new THREE.DirectionalLight(color, intensity);
             light.position.set(-1, 2, 4);
             scene.add(light);
-            
+
           }
 
           const radius = 1;
           const detail = 50;
-          
+
           const geometry = new THREE.DodecahedronGeometry(radius, detail);
-        
+
           function makeInstance(geometry, color, x) {
-        
+
             const texture = new THREE.TextureLoader().load('texture/earth.jfif');
             const material = new THREE.MeshPhongMaterial({map: texture});
             const cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
-            
-        
+
+
             cube.position.x = 0;
             cube.position.z = -1;
-        
+
             return cube;
           }
-        
+
           const cubes = [
             makeInstance(geometry, 0x70ABAF,  0),
-        
+
           ];
-        
+
           function render(time) {
             time *= 0.0001;
-        
-        
-        
+
+
+
             cubes.forEach((cube, ndx) => {
               const speed = 1 + ndx * .1;
               const rot = time * speed;
               const float = time * speed;
               cube.rotation.x = rot;
               cube.rotation.y = rot;
-              
+
             });
-        
-        
+
+
             if (resizeRendererToDisplaySize(renderer)) {
             const canvas = renderer.domElement;
             camera.aspect = canvas.clientWidth / canvas.clientHeight;
             camera.updateProjectionMatrix();
           }
-        
+
             renderer.render(scene, camera);
-        
+
             requestAnimationFrame(render);
           }
-        
+
           requestAnimationFrame(render);
         }
-        
-        main();
-        
-        </script>
-        
 
-        
+        main();
+
+        </script>
+
+
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
-        
+
         *{
           font-family: 'Outfit', sans-serif;
         }
@@ -241,7 +241,7 @@
         }
 
         button{
-          
+
             background-color: lightseagreen;
             text-align: center;
             font-size: 1rem;
@@ -285,4 +285,3 @@
 
 
     </style>
-

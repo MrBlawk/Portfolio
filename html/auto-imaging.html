@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <section class="pictureColumn">
+        <div>
+            <header>
+                <h1>Automated imaging project</h1>
+                <p style="font-size: 1rem;">In the summer of 2021 I was hired to create an automated imaging system. To create this, I bought a Synology NAS and made it run a virtual linux machine. On this I setup FOG Project, and 
+                    designed a networking infrastructure that would make it possible to hook up any laptop to any lan and made it automatically install the pre-created Windows 10 image.
+                </p>
+            </header>
+            <img width="1000" height="1000" src="../pics/nas-1.jpg" alt="" class="skewElem">
+            <img width="1000" height="1000" src="../pics/nas-2.jpg" alt="" class="skewElem">
+            <img width="1000" height="1000" src="../vid/nas-1.mp4" alt="" class="skewElem">
+
+        </div>
+    </section>
+
+</body>
+</html>
+
+<style>
+        html{
+            overflow-y: scroll;
+            height: 100%;
+            -webkit-overflow-scrolling: touch;
+            
+        }
+
+        body{
+        color: white;
+        background-color: black;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        max-width: 100%;
+
+        overflow-y: visible;
+        position: relative;
+
+        }
+
+
+
+        .pictureColumn img{
+            margin-bottom: 10vh;
+            margin-inline: 5vh;
+            object-fit: cover;
+        }
+
+        header{
+            font-size: 2.0vw;
+        }
+
+        .comparisonSection{
+            position: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .comparisonImage{
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .afterImage{
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            transform: translate(100%, 0px);
+        }
+
+        .afterImage img{
+            transform: translate(-100%, 0px);
+        }
+
+        .comparisonImage img{
+            width: 100%;
+            height: 100%;
+            position: center;
+            top: 0;
+        }
+        
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+
+
+<script>
+
+//document.addEventListener('contextmenu', event => event.preventDefault());
+
+
+
+let proxy = { skew: 0 },
+    skewSetter = gsap.quickSetter(".skewElem", "skewY", "deg"), // fast
+    clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees. 
+
+ScrollTrigger.create({
+  onUpdate: (self) => {
+    let skew = clamp(self.getVelocity() / -300);
+    // only do something if the skew is MORE severe. Remember, we're always tweening back to 0, so if the user slows their scrolling quickly, it's more natural to just let the tween handle that smoothly rather than jumping to the smaller skew.
+    if (Math.abs(skew) > Math.abs(proxy.skew)) {
+      proxy.skew = skew;
+      gsap.to(proxy, {skew: 0, duration: 0.8, ease: "power3", overwrite: true, onUpdate: () => skewSetter(proxy.skew)});
+    }
+  }
+});
+
+// make the right edge "stick" to the scroll bar. force3D: true improves performance
+gsap.set(".skewElem", {transformOrigin: "right center", force3D: true});
+
+
+gsap.utils.toArray(".comparisonSection").forEach(section => {
+	let tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				start: "center center",
+        // makes the height of the scrolling (while pinning) match the width, thus the speed remains constant (vertical/horizontal)
+				end: () => "+=" + section.offsetWidth, 
+				scrub: true,
+				pin: true,
+        anticipatePin: 1
+			},
+			defaults: {ease: "none"}
+		});
+	// animate the container one way...
+	tl.fromTo(section.querySelector(".afterImage"), { xPercent: 100, x: 0}, {xPercent: 0})
+	  // ...and the image the opposite way (at the same time)
+	  .fromTo(section.querySelector(".afterImage img"), {xPercent: -100, x: 0}, {xPercent: 0}, 0);
+});
+
+
+</script>

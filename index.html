@@ -238,6 +238,13 @@
             color: white;
             background-color: black;
             text-align: center;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        body::-webkit-scrollbar {
+          display: none;
+          
         }
 
         button{

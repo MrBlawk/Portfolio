@@ -1,0 +1,8 @@
+User-agent: googlebot
+Disallow: /library/
+Disallow: /Shaders/
+Disallow: /pics/
+Disallow: /sounds/
+Disallow: /texture/
+Disallow: /galaxy/
+Disallow: /3d_scenes/

@@ -23,6 +23,11 @@
 
     <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
         <h1 style="color: black;">THREE.js + AR.js app demo</h1>
+        <h1>Scan the marker!</h1>
+    </div>
+
+    <div id="img-container">
+        <img id="marker" src="/Patterns/GGZ Friesland Marker.png" alt="">
     </div>
 
 
@@ -103,7 +108,7 @@
     ////             Construct ARtoolkit with camera params
     //////////////////////////////////////////////////////////////////////////
     var arToolkitContext = new THREEx.ArToolkitContext({
-        cameraParametersUrl: './Assets/Parameters/camera_para.dat',
+        cameraParametersUrl: './Patterns/camera_para.dat',
         detectionMode: 'mono',
         canvasWidth: 1920,
         canvasHeight: 1080,
@@ -433,3 +438,19 @@
     })
 
 </script></body>
+
+<style>
+    #img-container{
+        position: relative;
+    }
+
+    #marker{
+        position: fixed;
+        height: 300px;
+        width: 300px;
+        bottom: 50px;
+        left: 50px;
+        
+    }
+
+</style>

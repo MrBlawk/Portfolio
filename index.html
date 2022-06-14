@@ -10,12 +10,20 @@
     </head>
 
     <body>
+
+
         <div id="overlay" style="background:scroll">
             <h1>Portfolio</h1>
+            <img id="avatar" src="pics/me.jpg">
             <h1>Stijn Timmerman</h1>
 
+            
+
+
         <div class="btn-row">
+
             <div class="form">
+
               <form action="https://www.linkedin.com/in/stijn-timmerman058/">
                   <button>LinkedIn</button>
               </form>
@@ -234,10 +242,24 @@
           color: white;
         }
 
+
+
         #overlay img{
             background-image: url(textures/bg.jpg);
             opacity:1;
             background-size: contain;
+        }
+
+        #overlay{
+          position: relative;
+        }
+
+        #avatar{
+          
+          object-fit: cover;
+          border-radius: 50%;
+          height: 120px;
+          width: 120px;
         }
 
         body{

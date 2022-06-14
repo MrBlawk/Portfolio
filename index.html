@@ -132,6 +132,7 @@
 
     <script type="module">
         import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
+        import {OrbitControls} from 'https://unpkg.com/three@0.119.1/examples/jsm/controls/OrbitControls.js'
 
         function resizeRendererToDisplaySize(renderer) {
           const canvas = renderer.domElement;
@@ -159,7 +160,12 @@
           const near = 0.1;
           const far = 5;
           const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-          camera.position.z = 2;
+          camera.position.z = 3;
+
+
+          const controls = new OrbitControls(camera,renderer.domElement );
+          controls.enableZoom = false;
+          controls.enablePan = false;
 
           var scene = new THREE.Scene();
           scene.background = new THREE.Color( 0x4F4789 );
@@ -175,7 +181,7 @@
           const radius = 1;
           const detail = 50;
 
-          const geometry = new THREE.DodecahedronGeometry(radius, detail);
+          var geometry = new THREE.DodecahedronGeometry(radius, detail);
 
           function makeInstance(geometry, color, x) {
 
@@ -186,7 +192,7 @@
 
 
             planet.position.x = 0;
-            planet.position.z = -1;
+            planet.position.z = 0;
 
             return planet;
           }
@@ -196,10 +202,13 @@
 
           ];
 
+          camera.lookAt(geometry);
+
+
           function render(time) {
             time *= 0.0001;
 
-
+            controls.update();
 
             planets.forEach((planet, ndx) => {
               const speed = 1 + ndx * .1;

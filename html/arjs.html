@@ -23,11 +23,12 @@
 
     <div style='position: fixed; top: 10px; width:100%; text-align: center; z-index: 1;'>
         <h1 style="color: black;">THREE.js + AR.js app demo</h1>
-        <h1>Scan the marker!</h1>
+        <h1>Scan the QR code with your phone and then scan the marker!</h1>
     </div>
 
     <div id="img-container">
-        <img id="marker" src="/Patterns/GGZ Friesland Marker.png" alt="">
+        <img id="qrcode" src="/Patterns/qr-code.png">
+        <img id="marker" src="/Patterns/marker2.png">
     </div>
 
 
@@ -450,7 +451,14 @@
         width: 300px;
         bottom: 50px;
         left: 50px;
-        
+    }
+
+    #qrcode{
+        position: fixed;
+        height: 300px;
+        width: 300px;
+        bottom: 400px;
+        left: 50px;
     }
 
 </style>

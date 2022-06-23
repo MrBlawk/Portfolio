@@ -5,12 +5,16 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/pics/favicon.svg">
 
         <title>Stijn Timmerman</title>
     </head>
 
     <body>
 
+        <div>
+          <img id="logo" src="pics/favicon.png" alt="">
+        </div>
 
         <div id="overlay" style="background:scroll">
             <h1>Portfolio</h1>
@@ -260,6 +264,13 @@
           color: white;
         }
 
+        #logo{
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          width: 5%;
+          height: auto;
+        }
 
 
         #overlay img{
@@ -276,8 +287,8 @@
           
           object-fit: cover;
           border-radius: 50%;
-          height: 200px;
-          width: 200px;
+          height: auto;
+          width: 10%;
         }
 
         body::-webkit-scrollbar {
@@ -316,7 +327,7 @@
         }
 
         .form{
-          display: list-item;
+          display:flow-root;
         }
 
 
@@ -344,10 +355,12 @@
           font-weight: 300; 
         }
         h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
+        h6 { font-size: 3.0rem; line-height: 1.2;  letter-spacing: 0rem;}
 
       
         @media (min-width: 550px) {
           h1 { font-size: 5.0rem; }
+          h6 { font-size: 1.0rem; }
         }
 
     </style>

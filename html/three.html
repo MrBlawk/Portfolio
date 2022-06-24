@@ -6,21 +6,6 @@ import { GLTFLoader } from 'https://cdn.skypack.dev/pin/three@v0.132.0-0qnAR3gXw
 import { OrbitControls } from 'https://cdn.skypack.dev/pin/three@v0.132.0-0qnAR3gXwtLrcSIx3p2d/mode=imports,min/unoptimized/examples/jsm/controls/OrbitControls.js';
 import { Octree } from 'https://cdn.skypack.dev/pin/three@v0.132.0-0qnAR3gXwtLrcSIx3p2d/mode=imports,min/unoptimized/examples/jsm/math/Octree.js';
 
-
-
-document.onkeydown = function(e) {
-        if (e.ctrlKey && 
-            (e.keyCode === 67 || 
-             e.keyCode === 86 || 
-             e.keyCode === 85 || 
-             e.keyCode === 117)) {
-            alert('Trying to steal the code, eh?');
-            return false;
-        } else {
-            return true;
-        }
-};
-
 function resizeRendererToDisplaySize(renderer) {
   const canvas = renderer.domElement;
   const width = canvas.clientWidth;
@@ -80,7 +65,7 @@ function main() {
 
   function makeInstance() {
     var loader = new GLTFLoader();
-    loader.load('../modellen/Earth.glb', (gltf) => {
+    loader.load('../Assets/modellen/Earth.glb', (gltf) => {
       
       scene.add(gltf.scene);
 
@@ -127,7 +112,7 @@ function main() {
     requestAnimationFrame(render);
   }
 
-  //skybox stuff
+  //skybox stuff SKYBOX has currently be disabled, custom shader is wip.
   //settingup the materialarray and defining the textures to a let.
   let materialArray = [];
   let texture_ft = new THREE.TextureLoader().load('.../texture/galaxy_ft.jpg');

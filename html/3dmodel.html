@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-        <title>3D model</title>
+        <title>Earth mode, texture and custom shader</title>
     </head>
 
 
@@ -189,7 +189,7 @@
 			document.body.appendChild(renderer.domElement);
 
 			var loader = new THREE.GLTFLoader();
-			earth = loader.load('../modellen/Earth.glb', function(earth) {
+			earth = loader.load('../Assets/modellen/Earth.glb', function(earth) {
 				scene.add(earth.scene);
 				renderer.render(scene, camera);
 				},

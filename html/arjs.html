@@ -14,7 +14,7 @@
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/master/three.js/build/ar.js"></script>
     <script>THREEx.ArToolkitContext.baseURL = 'https://cdn.rawgit.com/jeromeetienne/AR.js/master/three.js/examples/'</script>
     <!-- Events Controls library -->
-    <script src="/import/EventsControls.js"></script>
+    <script src="/scripts/EventsControls.js"></script>
 
 </head>
 
@@ -27,8 +27,8 @@
     </div>
 
     <div id="img-container">
-        <img id="qrcode" src="/Patterns/qr-code.png">
-        <img id="marker" src="/Patterns/marker2.png">
+        <img id="qrcode" src="/Assets/AR/Patterns/qr-code.png">
+        <img id="marker" src="/Assets/AR/Patterns/marker2.png">
     </div>
 
 
@@ -109,7 +109,7 @@
     ////             Construct ARtoolkit with camera params
     //////////////////////////////////////////////////////////////////////////
     var arToolkitContext = new THREEx.ArToolkitContext({
-        cameraParametersUrl: '/Patterns/camera_para.dat',
+        cameraParametersUrl: '/Assets/AR/Patterns/camera_para.dat',
         detectionMode: 'mono',
         canvasWidth: 1920,
         canvasHeight: 1080,
@@ -138,7 +138,7 @@
     //specify .patt file
     var artoolkitMarker = new THREEx.ArMarkerControls(arToolkitContext, markerRoot,{
         type: 'pattern',
-        patternUrl: '/Patterns/marker.patt'
+        patternUrl: '/Assets/AR/Patterns/marker.patt'
     })
 
     //////////////////////////////////////////////////////////////////////////
@@ -227,19 +227,19 @@
     function createTextPlanes(){
         const sloganGeometry = new THREE.PlaneGeometry(12 * scale,6 * scale);
         const sloganMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Tekst_Slogan.png'),
+            map: loader.load('/Assets/AR/Mockup/Tekst_Slogan.png'),
             transparent: true
         });
 
         const quoteGeometry = new THREE.PlaneGeometry(7 * scale,8 * scale);
         const quoteMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Tekst_Quote.png'),
+            map: loader.load('/Assets/AR/Mockup/Tekst_Quote.png'),
             transparent: true
         });
 
         const logoGeometry = new THREE.PlaneGeometry(9 * scale,6 * scale);
         const logoMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Logo_GGZ_Site.png'),
+            map: loader.load('/Assets/AR/Mockup/Logo_GGZ_Site.png'),
             transparent: true
         });
 
@@ -302,19 +302,19 @@
         ////             small buttons materials(4)
         //////////////////////////////////////////////////////////////////////////
         const callMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Button_Call.png'),
+            map: loader.load('/Assets/AR/Mockup/Button_Call.png'),
             transparent: true
         });
         const messageMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Button_Chat.png'),
+            map: loader.load('/Assets/AR/Mockup/Button_Chat.png'),
             transparent: true
         });
         const mailMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Button_Mail.png'),
+            map: loader.load('/Assets/AR/Mockup/Button_Mail.png'),
             transparent: true
         });
         const locationMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Button_Maps.png'),
+            map: loader.load('/Assets/AR/Mockup/Button_Maps.png'),
             transparent: true
         });
 
@@ -322,12 +322,12 @@
         ////             big buttons materials(2)
         //////////////////////////////////////////////////////////////////////////
         const webMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Button_Site.png'),
+            map: loader.load('/Assets/AR/Mockup/Button_Site.png'),
             transparent: true
         });
 
         const vacancyMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Button_Vacature.png'),
+            map: loader.load('/Assets/AR/Mockup/Button_Vacature.png'),
             transparent: true
         });
 
@@ -335,7 +335,7 @@
         ////             Video button material(1)
         //////////////////////////////////////////////////////////////////////////
         const videoMaterial = new THREE.MeshBasicMaterial({
-            map: loader.load('/Assets/Mockup/Youtube_Link.png')
+            map: loader.load('/Assets/AR/Mockup/Youtube_Link.png')
         })
         //////////////////////////////////////////////////////////////////////////
         ////             small buttons meshes(4)

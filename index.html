@@ -13,12 +13,12 @@
     <body>
 
         <div>
-          <img id="logo" src="pics/favicon.png" alt="">
+          <img id="logo" src="Assets/pics/favicon.png" alt="">
         </div>
 
         <div id="overlay" style="background:scroll">
             <h1>Portfolio</h1>
-            <img id="avatar" src="pics/me.jpg">
+            <img id="avatar" src="Assets/pics/me.jpg">
             <h1>Stijn Timmerman</h1>
             <h6>(many of my projects are not (yet) compatible with mobile.)</h6>
 
@@ -195,7 +195,7 @@
 
           function makeInstance(geometry, color, x) {
 
-            const texture = new THREE.TextureLoader().load('texture/earth.jfif');
+            const texture = new THREE.TextureLoader().load('Assets/texture/earth.jfif');
             const material = new THREE.MeshPhongMaterial({map: texture});
             const planet = new THREE.Mesh(geometry, material);
             scene.add(planet);

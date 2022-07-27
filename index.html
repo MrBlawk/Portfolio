@@ -20,63 +20,53 @@
 
           gtag('config', 'G-YY97M2EF82');
         </script>
+
+        <!-- Importing daisyui and tailwindcss -->
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@2.17.0/dist/full.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
 
-    <body>
+    <body class="flex flex-col min-h-screen">
 
-        <div>
-          <img id="logo" src="Assets/pics/favicon.png" alt="">
+      <!-- Getting my logo in the top left of the webpage -->
+      <div>
+        <img id="logo" src="Assets/pics/favicon.png" alt="">
+      </div> 
+
+      <!-- <div id="logo" class="dropdown">
+        <label tabindex="0" class="btn m-1">img</label>
+        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a>Item 1</a></li>
+          <li><a>Item 2</a></li>
+        </ul>
+      </div> -->
+
+
+      <!-- Top of page with title, avatar and name. Also added tailwindcss styling. -->
+      <div id="overlay" style="background:scroll">
+        <div class="grid place-items-center h-auto">            
+          <h1>Portfolio</h1>
+          <img id="avatar" class="" src="Assets/pics/me.jpg">
+          <h1>Stijn Timmerman</h1>
+          <h6>Welcome to my portfolio page!</h6>
+          <h6>I have programmed and deployed this website using Visual Code and Github Pages.</h6>
         </div>
-
-        <div id="overlay" style="background:scroll">
-            <h1>Portfolio</h1>
-            <img id="avatar" src="Assets/pics/me.jpg">
-            <h1>Stijn Timmerman</h1>
-            <h6>(many of my projects are not (yet) compatible with mobile.)</h6>
-
             
 
 
         <div class="btn-row">
 
-            <div class="form">
+          <div class="form">
+            <form action="html/internship.html">
+                <button id="stand-out">My internship!</button>
+            </form>
+          </div>
 
-              <div class="form">
-                <form action="html/internship.html">
-                    <button id="stand-out">My internship!</button>
-                </form>
-              </div>
-
-              <form action="https://www.linkedin.com/in/stijn-timmerman058/">
-                  <button>LinkedIn</button>
-              </form>
-            </div>
-
-            <div class="form">
-              <form action="https://blawk.artstation.com/">
-                  <button>Artstation</button>
-              </form>
-            </div>
-
-            <div class="form">
-              <form action="mailto:stijn@stimmerman.nl">
-                  <button>Get in touch with me!</button>
-              </form>
-            </div>
-
-            <div class="form">
-                <form action="html/three.html">
-                    <button>View Earth</button>
-                </form>
-            </div>
-
-            <div class="form">
-              <form action="html/FPS.html">
-                  <button>First person 3js (no mobile)</button>
-              </form>
-            </div>
-
-
+          <div class="form">
+            <form action="https://blawk.artstation.com/">
+                <button>Artstation</button>
+            </form>
+          </div>
 
           <div class="form">
             <form action="https://mrblawk.github.io/CMD-Roadtrip/">
@@ -89,23 +79,13 @@
                 <button>Portfolio for artist</button>
                 </form>
           </div>
-
-
-
         </div>
 
         <div class="btn-row">
-
           <div class="form">
             <form action="https://blawk.itch.io/flu-fighter-2021">
                 <button>Gamejam (no mobile)</button>
                 </form>
-          </div>
-
-          <div class="form">
-            <form action="html/simon.html">
-                <button>Simon (the app brewery)</button>
-            </form>
           </div>
 
           <div class="form">
@@ -126,140 +106,136 @@
             </form>
           </div>
 
-          <div class="form">
-            <form action="html/3dmodel.html">
-                <button>Custom shader</button>
-            </form>
-          </div>
-
-          
-          <div class="form">
-            <form action="html/triggertest.html">
-                <button>Scrolltrigger example</button>
-            </form>
-          </div>
-
-          <div class="form">
-            <form action="https://www.linkedin.com/in/stijn-timmerman058/">
-                <button>---</button>
-            </form>
-          </div>
-
-
         </div>
       </div>
 
-        <canvas id="c">
-        </canvas>
+      <footer class="footer sticky items-center p-4 bg-neutral text-neutral-content mt-auto">
+        <div class="items-center grid-flow-col">
+          <a href="https://stimmerman.nl"><img src="/Assets/pics/favicon.png" width="24" height="24" viewBox="0 0 24 24" class="fill-current"></a>
+          <p>Copyright © 2022 - All right reserved</p>
+        </div> 
+        <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+          <!-- Linkedin Logo and link -->
+          <a href="https://www.linkedin.com/in/stijn-timmerman058/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a> 
+          <!-- GitHub logo and link -->
+          <a href="https://github.com/MrBlawk"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a>
+          <!-- e-mail me Logo and link -->
+          <a href="mailto:stijn@stimmerman.nl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 75.294 75.294" class="fill-current"><path d="M66.097,12.089h-56.9C4.126,12.089,0,16.215,0,21.286v32.722c0,5.071,4.126,9.197,9.197,9.197h56.9   c5.071,0,9.197-4.126,9.197-9.197V21.287C75.295,16.215,71.169,12.089,66.097,12.089z M61.603,18.089L37.647,33.523L13.691,18.089   H61.603z M66.097,57.206h-56.9C7.434,57.206,6,55.771,6,54.009V21.457l29.796,19.16c0.04,0.025,0.083,0.042,0.124,0.065   c0.043,0.024,0.087,0.047,0.131,0.069c0.231,0.119,0.469,0.215,0.712,0.278c0.025,0.007,0.05,0.01,0.075,0.016   c0.267,0.063,0.537,0.102,0.807,0.102c0.001,0,0.002,0,0.002,0c0.002,0,0.003,0,0.004,0c0.27,0,0.54-0.038,0.807-0.102   c0.025-0.006,0.05-0.009,0.075-0.016c0.243-0.063,0.48-0.159,0.712-0.278c0.044-0.022,0.088-0.045,0.131-0.069   c0.041-0.023,0.084-0.04,0.124-0.065l29.796-19.16v32.551C69.295,55.771,67.86,57.206,66.097,57.206z"></path></svg>
+          <!-- Artstation Logo and link -->
+          <a href="https://blawk.artstation.com/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" class="fill-current"><path d="M2 377.4l43 74.3A51.35 51.35 0 0 0 90.9 480h285.4l-59.2-102.6zM501.8 350L335.6 59.3A51.38 51.38 0 0 0 290.2 32h-88.4l257.3 447.6 40.7-70.5c1.9-3.2 21-29.7 2-59.1zM275 304.5l-115.5-200L44 304.5z"></path></svg>
+        </div>
+      </footer>
     </body>
 
 
 
     <script type="module">
-        import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
-        import {OrbitControls} from 'https://unpkg.com/three@0.119.1/examples/jsm/controls/OrbitControls.js'
+      //code for rendering my 3D model in bottom of page, removed from current design.
 
-        function resizeRendererToDisplaySize(renderer) {
-          const canvas = renderer.domElement;
-          const width = canvas.clientWidth;
-          const height = canvas.clientHeight;
-          const needResize = canvas.width !== width || canvas.height !== height;
-          if (needResize) {
-            renderer.setSize(width, height, false);
-          }
-          return needResize;
-        }
+        // import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
+        // import {OrbitControls} from 'https://unpkg.com/three@0.119.1/examples/jsm/controls/OrbitControls.js'
 
-        function main() {
-          const canvas = document.querySelector('#c');
-          const renderer = new THREE.WebGLRenderer(
-            {canvas},
-            {alpha:true}
-          );
+        // function resizeRendererToDisplaySize(renderer) {
+        //   const canvas = renderer.domElement;
+        //   const width = canvas.clientWidth;
+        //   const height = canvas.clientHeight;
+        //   const needResize = canvas.width !== width || canvas.height !== height;
+        //   if (needResize) {
+        //     renderer.setSize(width, height, false);
+        //   }
+        //   return needResize;
+        // }
 
-          renderer.autoClear = false;
-          renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+        // function main() {
+        //   const canvas = document.querySelector('#c');
+        //   const renderer = new THREE.WebGLRenderer(
+        //     {canvas},
+        //     {alpha:true}
+        //   );
 
-          const fov = 60;
-          const aspect = 1;  // the canvas default
-          const near = 0.1;
-          const far = 5;
-          const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-          camera.position.z = 3;
+        //   renderer.autoClear = false;
+        //   renderer.setClearColor(new THREE.Color('lightgrey'), 0)
 
-
-          const controls = new OrbitControls(camera,renderer.domElement );
-          controls.enableZoom = false;
-          controls.enablePan = false;
-
-          var scene = new THREE.Scene();
-          scene.background = new THREE.Color( 0x4F4789 );
-
-          {
-            const color = 0xFFFFFF;
-            const intensity = 1;
-            const light = new THREE.DirectionalLight(color, intensity);
-            light.position.set(-1, 2, 4);
-            scene.add(light);
-          }
-
-          const radius = 1;
-          const detail = 50;
-
-          var geometry = new THREE.DodecahedronGeometry(radius, detail);
-
-          function makeInstance(geometry, color, x) {
-
-            const texture = new THREE.TextureLoader().load('Assets/texture/earth.jfif');
-            const material = new THREE.MeshPhongMaterial({map: texture});
-            const planet = new THREE.Mesh(geometry, material);
-            scene.add(planet);
+        //   const fov = 60;
+        //   const aspect = 1;  // the canvas default
+        //   const near = 0.1;
+        //   const far = 5;
+        //   const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        //   camera.position.z = 3;
 
 
-            planet.position.x = 0;
-            planet.position.z = 0;
+        //   const controls = new OrbitControls(camera,renderer.domElement );
+        //   controls.enableZoom = false;
+        //   controls.enablePan = false;
 
-            return planet;
-          }
+        //   var scene = new THREE.Scene();
+        //   scene.background = new THREE.Color( 0x4F4789 );
 
-          const planets = [
-            makeInstance(geometry, 0x70ABAF,  0),
+        //   {
+        //     const color = 0xFFFFFF;
+        //     const intensity = 1;
+        //     const light = new THREE.DirectionalLight(color, intensity);
+        //     light.position.set(-1, 2, 4);
+        //     scene.add(light);
+        //   }
 
-          ];
+        //   const radius = 1;
+        //   const detail = 50;
 
-          camera.lookAt(geometry);
+        //   var geometry = new THREE.DodecahedronGeometry(radius, detail);
 
+        //   function makeInstance(geometry, color, x) {
 
-          function render(time) {
-            time *= 0.0001;
-
-            controls.update();
-
-            planets.forEach((planet, ndx) => {
-              const speed = 1 + ndx * .1;
-              const rot = time * speed;
-              const float = time * speed;
-              planet.rotation.x = -0.1;
-              planet.rotation.y = rot;
-
-            });
+        //     const texture = new THREE.TextureLoader().load('Assets/texture/earth.jfif');
+        //     const material = new THREE.MeshPhongMaterial({map: texture});
+        //     const planet = new THREE.Mesh(geometry, material);
+        //     scene.add(planet);
 
 
-            if (resizeRendererToDisplaySize(renderer)) {
-            const canvas = renderer.domElement;
-            camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            camera.updateProjectionMatrix();
-          }
+        //     planet.position.x = 0;
+        //     planet.position.z = 0;
 
-            renderer.render(scene, camera);
+        //     return planet;
+        //   }
 
-            requestAnimationFrame(render);
-          }
+        //   const planets = [
+        //     makeInstance(geometry, 0x70ABAF,  0),
 
-          requestAnimationFrame(render);
-        }
+        //   ];
 
-        main();
+        //   camera.lookAt(geometry);
+
+
+        //   function render(time) {
+        //     time *= 0.0001;
+
+        //     controls.update();
+
+        //     planets.forEach((planet, ndx) => {
+        //       const speed = 1 + ndx * .1;
+        //       const rot = time * speed;
+        //       const float = time * speed;
+        //       planet.rotation.x = -0.1;
+        //       planet.rotation.y = rot;
+
+        //     });
+
+
+        //     if (resizeRendererToDisplaySize(renderer)) {
+        //     const canvas = renderer.domElement;
+        //     camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        //     camera.updateProjectionMatrix();
+        //   }
+
+        //     renderer.render(scene, camera);
+
+        //     requestAnimationFrame(render);
+        //   }
+
+        //   requestAnimationFrame(render);
+        // }
+
+        // main();
 
         </script>
 
@@ -275,36 +251,26 @@
           color: white;
         }
 
-        h1{
-          color: white;
-        }
-
         #logo{
           position: absolute;
           top: 20px;
           left: 20px;
-          width: 5%;
+          width: 15%;
           height: auto;
         }
-
-
 
         #overlay{
           position: relative;
         }
 
         #avatar{
-          
           object-fit: cover;
           border-radius: 50%;
           height: auto;
-          width: 10%;
+          width: 20%;
         }
 
-        body::-webkit-scrollbar {
-          display: none;
-          
-        }
+
 
         button{
             border: white;
@@ -362,7 +328,7 @@
 
         html, body{
             margin: 0;
-            height: 100%;
+            height: auto;
             background-color: #4F4789;
             color: white;
             text-align: center;
@@ -370,12 +336,16 @@
             scrollbar-width: none;  /* Firefox */
         }
 
-        #c {
+        body::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* #c {
             width: 100%;
             height: 100%;
             display: block;
             background-color: #4F4789;
-        }
+        } */
 
         /*font sizing*/
         h1, h2, h3, h4, h5, h6 {
@@ -383,13 +353,14 @@
           margin-bottom: 2rem;
           font-weight: 300; 
         }
-        h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
-        h6 { font-size: 3.0rem; line-height: 1.2;  letter-spacing: 0rem;}
+        h1 { font-size: 3.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
+        h6 { font-size: 1.0rem; line-height: 1.2;  letter-spacing: 0rem;}
 
       
-        @media (min-width: 550px) {
+        @media (min-width: 600px) {
           h1 { font-size: 5.0rem; }
-          h6 { font-size: 1.0rem; }
+          h6 { font-size: 1.2rem; }
+          #logo { width: 5%;}
+          #avatar { width: 15%;}
         }
-
     </style>

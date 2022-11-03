@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Programming portfolio Stijn Timmerman." />
+        <meta name="description" content="Portfolio Stijn Timmerman." />
         <link rel="icon" type="image/x-icon" href="Assets/pics/favicon.svg">
 
         <title>Stijn Timmerman</title>
@@ -21,346 +21,249 @@
           gtag('config', 'G-YY97M2EF82');
         </script>
 
-        <!-- Importing daisyui and tailwindcss -->
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@2.17.0/dist/full.css" rel="stylesheet" type="text/css" />
-        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Importing styles.css and bootstrap css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- Font awesome -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     </head>
 
-    <body class="flex flex-col min-h-screen">
+    <body>
 
-      <!-- Getting my logo in the top left of the webpage -->
-      <div>
-        <img id="logo" src="Assets/pics/favicon.png" alt="">
-      </div> 
-
-      <!-- <div id="logo" class="dropdown">
-        <label tabindex="0" class="btn m-1">img</label>
-        <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li><a>Item 1</a></li>
-          <li><a>Item 2</a></li>
-        </ul>
-      </div> -->
-
-
-      <!-- Top of page with title, avatar and name. Also added tailwindcss styling. -->
-      <div id="overlay" style="background:scroll">
-        <div class="grid place-items-center h-auto">            
-          <h1>Portfolio</h1>
-          <img id="avatar" class="" src="Assets/pics/me.jpg">
-          <h1>Stijn Timmerman</h1>
-          <h6>Welcome to my portfolio page!</h6>
-          <h6>I have programmed and deployed this website using VS Code and Github Pages.</h6>
+      <section id="title">
+        <div class="container-fluid">
+          <!-- Nav Bar -->
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">
+              <img src="/Assets/pics/favicon.png" alt="" height="70">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+      
+            <div class="collapse navbar-collapse " id="navbarContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">EXPERIENCE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">PROJECTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills-education">SKILLS & EDUCATION</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#contact">CONTACT</a>
+                  </li>
+                </ul>
+            </div>
+          </nav>
         </div>
+
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-lg-8">
+              <h1>STIJN TIMMERMAN</h1>
+            </div>
+      
+            <div class="col-lg-4 align-items-end d-flex">
+              <p class="header-title">GENERALIST PROGRAMMER</p>
+            </div>
             
+            <div class="col-lg-8">
+              <img class="left-img-block" src="/assets/pics/me.jpg" alt="">
+            </div>
 
-
-        <div class="btn-row">
-
-          <div class="form">
-            <form action="html/internship.html">
-                <button id="stand-out">My internship!</button>
-            </form>
+            <div class="col-lg-4">
+              <p>welcome to my portfolio website, where you can see some of the work I've done for my BA, internship and sideprojects.</p>
+            </div>
+      
           </div>
-
-          <div class="form">
-            <form action="https://blawk.artstation.com/">
-                <button>Artstation</button>
-            </form>
-          </div>
-
-          <div class="form">
-            <form action="https://mrblawk.github.io/CMD-Roadtrip/">
-                <button>Project CMD-Leeuwarden</button>
-            </form>
-          </div>
-
-          <div class="form">
-            <form action="https://w0lffster.github.io/ElisaTeigeler/">
-                <button>Portfolio for artist</button>
-                </form>
-          </div>
-        </div>
-
-        <div class="btn-row">
-          <div class="form">
-            <form action="https://blawk.itch.io/flu-fighter-2021">
-                <button>Gamejam (no mobile)</button>
-                </form>
-          </div>
-
-          <div class="form">
-            <form action="html/fierfm.html">
-                <button>3D page for internetradio</button>
-            </form>
-          </div>
-
-          <div class="form">
-            <form action="html/arjs.html">
-                <button>AR with phone camera!</button></button>
-            </form>
-          </div>
-
-          <div class="form">
-            <form action="html/auto-imaging.html">
-                <button>Auto-imaging with a NAS</button>
-            </form>
-          </div>
-
-        </div>
       </div>
 
-      <footer class="footer sticky items-center p-4 bg-neutral text-neutral-content mt-auto">
-        <div class="items-center grid-flow-col">
-          <a href="https://stimmerman.nl"><img src="/Assets/pics/favicon.png" width="24" height="24" viewBox="0 0 24 24" class="fill-current"></a>
-          <p>Copyright © 2022 - All right reserved</p>
-        </div> 
-        <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-          <!-- Linkedin Logo and link -->
-          <a href="https://www.linkedin.com/in/stijn-timmerman058/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg></a> 
-          <!-- GitHub logo and link -->
-          <a href="https://github.com/MrBlawk"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg></a>
-          <!-- e-mail me Logo and link -->
-          <a href="mailto:stijn@stimmerman.nl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 75.294 75.294" class="fill-current"><path d="M66.097,12.089h-56.9C4.126,12.089,0,16.215,0,21.286v32.722c0,5.071,4.126,9.197,9.197,9.197h56.9   c5.071,0,9.197-4.126,9.197-9.197V21.287C75.295,16.215,71.169,12.089,66.097,12.089z M61.603,18.089L37.647,33.523L13.691,18.089   H61.603z M66.097,57.206h-56.9C7.434,57.206,6,55.771,6,54.009V21.457l29.796,19.16c0.04,0.025,0.083,0.042,0.124,0.065   c0.043,0.024,0.087,0.047,0.131,0.069c0.231,0.119,0.469,0.215,0.712,0.278c0.025,0.007,0.05,0.01,0.075,0.016   c0.267,0.063,0.537,0.102,0.807,0.102c0.001,0,0.002,0,0.002,0c0.002,0,0.003,0,0.004,0c0.27,0,0.54-0.038,0.807-0.102   c0.025-0.006,0.05-0.009,0.075-0.016c0.243-0.063,0.48-0.159,0.712-0.278c0.044-0.022,0.088-0.045,0.131-0.069   c0.041-0.023,0.084-0.04,0.124-0.065l29.796-19.16v32.551C69.295,55.771,67.86,57.206,66.097,57.206z"></path></svg>
-          <!-- Artstation Logo and link -->
-          <a href="https://blawk.artstation.com/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" class="fill-current"><path d="M2 377.4l43 74.3A51.35 51.35 0 0 0 90.9 480h285.4l-59.2-102.6zM501.8 350L335.6 59.3A51.38 51.38 0 0 0 290.2 32h-88.4l257.3 447.6 40.7-70.5c1.9-3.2 21-29.7 2-59.1zM275 304.5l-115.5-200L44 304.5z"></path></svg>
+      </section>
+
+      <section id="experience">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-8">
+              <h1>EXPERIENCE</h1>
+              <div class="col-lg-12">
+                <img class="left-img-block" src="/Assets/pics/me.jpg" alt="">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <img class="right-img-block" src="/Assets/pics/me.jpg" alt="">
+            </div>
+          </div>
+
+          <!-- Title section header texts -->
+          <div class="row">
+            <div class="col-lg-1">
+              <h2>01</h2>
+            </div>
+            <div class="col-lg-7">
+              <p class="header-title">GENERALIST PROGRAMMER</p>
+              <p>knowledge of c#, javascript, expressjs, etc.</p>
+            </div>
+            <div class="col-lg-1">
+              <h2>02</h2>
+            </div>
+            <div class="col-lg-3">
+              <p class="header-title">GAME DEVELOPMENT</p>
+              <p>VR, AR with UE4, Unity and javascript.</p>
+            </div>
+          </div>
         </div>
+
+        <!-- quote section -->
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-7">              
+                <h2 class="quote-title">SOLVING WICKED PROBLEMS TO HELP PEOPLE, BY USING INNOVATIVE TECHNOLOGY.</h2>
+                <h2>THERE IS BEAUTY IN SEEING YOUR IDEAS COME TO LIFE AND HELP BRING OUT THE BEST IN PEOPLE.</h2>
+            </div>
+
+            <div class="col-lg-5">
+              <img class="right-img-block" src="/Assets/pics/me.jpg" alt="">
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-8">
+              <h1>PROJECTS</h1>
+              <div class="col-lg-12">
+                <img class="left-img-block" src="/Assets/pics/me.jpg" alt="">
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <img class="right-img-block" src="/Assets/pics/me.jpg" alt="">
+            </div>
+          </div>
+
+          <!-- Title section header texts -->
+          <div class="row">
+            <div class="col-lg-1">
+              <h2>01</h2>
+            </div>
+            <div class="col-lg-7">
+              <p class="header-title">FIRST GAMEJAM</p>
+              <p>2020, minor Game Development & 3D</p>
+            </div>
+            <div class="col-lg-1">
+              <h2>02</h2>
+            </div>
+            <div class="col-lg-3">
+              <p class="header-title">INTERNSHIP GGZ FRIESLAND</p>
+              <p>2022, concepting and game dvelopment.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5">
+              <img class="left-img-block" src="/Assets/pics/me.jpg" alt="">
+              <div class="row">
+                <div class="col-lg-3">
+                  <h2>03</h2>
+                </div>
+                <div class="col-lg-9">
+                  <p class="header-title">PROJECT CMD LEEUWARDEN</p>
+                  <p>2021, NHL Stenden CMD</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+              <div class="top-padding-img">
+                <img class="left-img-block" src="/Assets/pics/me.jpg" alt="">
+              </div>
+              <div class="row">
+                <div class="col-lg-2">
+                  <h2>04</h2>
+                </div>
+                <div class="col-lg-10">
+                  <p class="header-title">MOBILE AUGMENTED REALITY</p>
+                  <p>2022, NHL Stenden CMD</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills-education">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6">
+              <img class="left-img-block" src="/Assets/pics/me.jpg" alt="">
+              <h2>EDUCATION</h2>
+              <p class="header-title">BA COMMUNICATION & MULTIMEDIA DESIGN</p>
+              <p>graduating 2023 - NHL Stenden University of Applied Sciences</p>
+
+              <p class="header-title">HBO-ICT</p>
+              <p> 2017-2019 - NHL Stenden University of Applied Sciences</p>
+            </div>
+
+            <div class="col-lg-6">
+              <h2>SKILLS</h2>
+              <li>design thinking</li>
+              <li>scrum</li>
+              <li>VR/AR/game development</li>
+              <li>full-stack webdevelopment</li>
+              <li>open to learn anything that is useful</li>
+              <img class="left-img-block top-padding-img" src="/Assets/pics/me.jpg" alt="">
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section id="contact">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-5">
+              <h1>GET IN TOUCH</h1>
+
+              <div style="padding-top: 5rem;">
+                <p class="header-title">EMAIL</p>
+                <p>STIJN.TIMMERMAN@STUDENT.NHLSTENDEN.COM</p>
+                <p class="header-title">CALL</p>
+                <p>+31 6 36 28 38 97</p>
+              </div>
+
+            </div>
+            <div class="col-lg-7">
+              <img class="left-img-block" src="/Assets/pics/me.jpg" alt="">
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer id="footer">
+        <div class="container-fluid">
+          <i class="social-icon fab fa-facebook"></i>
+          <i class="social-icon fab fa-twitter"></i>
+          <i class="social-icon fab fa-instagram"></i>
+          <i class="social-icon fas fa-envelope"></i>
+          <p>© 2022 - Stijn Timmerman</p>
+        </div>
+
       </footer>
+
+
+      <!-- importing bootstrap js -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     </body>
 
 
-
-    <script type="module">
-      //code for rendering my 3D model in bottom of page, removed from current design.
-
-        // import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r132/build/three.module.js';
-        // import {OrbitControls} from 'https://unpkg.com/three@0.119.1/examples/jsm/controls/OrbitControls.js'
-
-        // function resizeRendererToDisplaySize(renderer) {
-        //   const canvas = renderer.domElement;
-        //   const width = canvas.clientWidth;
-        //   const height = canvas.clientHeight;
-        //   const needResize = canvas.width !== width || canvas.height !== height;
-        //   if (needResize) {
-        //     renderer.setSize(width, height, false);
-        //   }
-        //   return needResize;
-        // }
-
-        // function main() {
-        //   const canvas = document.querySelector('#c');
-        //   const renderer = new THREE.WebGLRenderer(
-        //     {canvas},
-        //     {alpha:true}
-        //   );
-
-        //   renderer.autoClear = false;
-        //   renderer.setClearColor(new THREE.Color('lightgrey'), 0)
-
-        //   const fov = 60;
-        //   const aspect = 1;  // the canvas default
-        //   const near = 0.1;
-        //   const far = 5;
-        //   const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-        //   camera.position.z = 3;
-
-
-        //   const controls = new OrbitControls(camera,renderer.domElement );
-        //   controls.enableZoom = false;
-        //   controls.enablePan = false;
-
-        //   var scene = new THREE.Scene();
-        //   scene.background = new THREE.Color( 0x4F4789 );
-
-        //   {
-        //     const color = 0xFFFFFF;
-        //     const intensity = 1;
-        //     const light = new THREE.DirectionalLight(color, intensity);
-        //     light.position.set(-1, 2, 4);
-        //     scene.add(light);
-        //   }
-
-        //   const radius = 1;
-        //   const detail = 50;
-
-        //   var geometry = new THREE.DodecahedronGeometry(radius, detail);
-
-        //   function makeInstance(geometry, color, x) {
-
-        //     const texture = new THREE.TextureLoader().load('Assets/texture/earth.jfif');
-        //     const material = new THREE.MeshPhongMaterial({map: texture});
-        //     const planet = new THREE.Mesh(geometry, material);
-        //     scene.add(planet);
-
-
-        //     planet.position.x = 0;
-        //     planet.position.z = 0;
-
-        //     return planet;
-        //   }
-
-        //   const planets = [
-        //     makeInstance(geometry, 0x70ABAF,  0),
-
-        //   ];
-
-        //   camera.lookAt(geometry);
-
-
-        //   function render(time) {
-        //     time *= 0.0001;
-
-        //     controls.update();
-
-        //     planets.forEach((planet, ndx) => {
-        //       const speed = 1 + ndx * .1;
-        //       const rot = time * speed;
-        //       const float = time * speed;
-        //       planet.rotation.x = -0.1;
-        //       planet.rotation.y = rot;
-
-        //     });
-
-
-        //     if (resizeRendererToDisplaySize(renderer)) {
-        //     const canvas = renderer.domElement;
-        //     camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        //     camera.updateProjectionMatrix();
-        //   }
-
-        //     renderer.render(scene, camera);
-
-        //     requestAnimationFrame(render);
-        //   }
-
-        //   requestAnimationFrame(render);
-        // }
-
-        // main();
-
-        </script>
-
-
-
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
-
-
-        *{
-          font-family: 'Outfit', sans-serif;
-          color: white;
-        }
-
-        #logo{
-          position: absolute;
-          top: 20px;
-          left: 20px;
-          width: 15%;
-          height: auto;
-        }
-
-        #overlay{
-          position: relative;
-        }
-
-        #avatar{
-          object-fit: cover;
-          border-radius: 50%;
-          height: auto;
-          width: 20%;
-        }
-
-
-
-        button{
-            border: white;
-            border-style:dotted;
-            border-radius: 20px;
-            border-width: 2px;
-            background-color: transparent;
-            text-align: center;
-            font-size: 1rem;
-            height: 55px;
-            width: 120px;
-            margin: 10px;
-            color: white;
-            word-wrap: break-word;
-        }
-
-        #stand-out{
-            border: red;
-            border-style:dotted;
-            border-radius: 20px;
-            border-width: 2px;
-            background-color: transparent;
-            text-align: center;
-            font-size: 1rem;
-            height: 55px;
-            width: 120px;
-            margin: 10px;
-            color: red;
-            word-wrap: break-word;
-        }
-
-        #stand-out:hover{
-          border-style: groove;
-        }
-
-        button:hover{
-          border-style: groove;
-        }
-
-        .btn-row{
-            float: left;
-            width: 50%;
-        }
-
-        .row:after{
-          content: "";
-          display: table;
-          clear: both;
-        }
-
-        .form{
-          display:flow-root;
-        }
-
-
-        html, body{
-            margin: 0;
-            height: auto;
-            background-color: #4F4789;
-            color: white;
-            text-align: center;
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
-
-        body::-webkit-scrollbar {
-          display: none;
-        }
-
-        /* #c {
-            width: 100%;
-            height: 100%;
-            display: block;
-            background-color: #4F4789;
-        } */
-
-        /*font sizing*/
-        h1, h2, h3, h4, h5, h6 {
-          margin-top: 0;
-          margin-bottom: 2rem;
-          font-weight: 300; 
-        }
-        h1 { font-size: 3.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
-        h6 { font-size: 1.0rem; line-height: 1.2;  letter-spacing: 0rem;}
-
-      
-        @media (min-width: 600px) {
-          h1 { font-size: 5.0rem; }
-          h6 { font-size: 1.2rem; }
-          #logo { width: 5%;}
-          #avatar { width: 15%;}
-        }
-    </style>

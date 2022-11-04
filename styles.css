@@ -18,7 +18,7 @@ h2 {
     font-size: 3rem;
 }
 
-p {
+p, li{
     font-weight: 300;
     font-size: 1rem;
 }
@@ -30,18 +30,20 @@ img{
 /* containers */
 
 .container-fluid{
-    padding: 3% 7%;
+    padding: 3% 15%;
 }
 
 .left-img-block {
     object-fit:cover;
     object-position: center; 
     width: 100%;
-    max-height: 250px;
+    height: 100%;
     margin-bottom: 0;
 }
 
 .right-img-block {
+    object-fit:cover;
+    object-position: center; 
     width: 100%;
     height: 100%;
 }
@@ -54,6 +56,22 @@ img{
     margin-bottom: 0;
 }
 
+
+/* text manipulation */
+
+.bold {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+/* general animations */
+
+.grow { 
+    transition: all .2s ease-in-out; 
+}
+.grow:hover {
+    scale: 1.05;
+}
 
 
 /* title section */
@@ -73,15 +91,14 @@ img{
 
 .nav-link {
     font-size: 1.2rem;
-
     font-weight: 400;
 }
 
 .navbar a{
     color: #fff;
     font-family: 'Public Sans', sans-serif;
-    font-weight: 300;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: 1.5rem;
 }
 
 /* quote section */
@@ -95,12 +112,18 @@ img{
     padding-top: 20%;
 }
 
+
 /* footer */
 #footer{
     text-align: center;
 }
 .social-icon {
     font-size: 1.5rem;
+    color: white;
+}
+
+.social-icon:hover {
+    color: #8f8f8f;
 }
 
 /* responsiveness */
@@ -113,7 +136,7 @@ img{
         font-size: 3;
     }
 
-    p {
+    p, li{
         font-size: 1rem;
     }
 
@@ -132,10 +155,14 @@ img{
     }
 
     h2{
-        font-size: 7rem;
+        font-size: 6rem;
     }
 
-    p {
+    p, li{
+        font-size: 2rem;
+    }
+
+    a{
         font-size: 2rem;
     }
 

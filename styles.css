@@ -90,7 +90,7 @@ img{
 /* Navigation Bar */
 
 .navbar {
-    padding: 0 0 4.5rem;
+    padding: 0 0 1rem;
 }
 
 .nav-item {
@@ -145,6 +145,10 @@ img{
         text-align: justify;
         margin: 3% 0;
         padding: 0;
+    }
+
+    .navbar {
+        padding: 0 0 1rem;
     }
 
     .quote-title{

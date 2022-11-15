@@ -1,0 +1,176 @@
+/* Import google font */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,700;1,700&display=swap');
+
+
+body{
+    font-family: 'Public Sans', sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 4rem;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+p, li{
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+img{
+    width: 100%;
+}
+
+/* containers */
+
+.container-fluid{
+    padding: 3% 15%;
+}
+
+.left-img-block {
+    object-fit:cover;
+    object-position: center; 
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+.right-img-block {
+    object-fit:cover;
+    object-position: center; 
+    width: 100%;
+    height: 100%;
+}
+
+/* headings */
+
+.header-title {
+    font-weight: 700;
+    padding-top: 6px;
+    margin-bottom: 0;
+}
+
+
+/* text manipulation */
+
+.bold {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+/* general animations */
+
+.grow { 
+    transition: all .2s ease-in-out; 
+}
+.grow:hover {
+    scale: 1.05;
+}
+
+
+/* title section */
+#title{
+    color: #fff;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    padding: 0 0 4.5rem;
+}
+
+.nav-item {
+    padding: 0 18px;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.navbar a{
+    color: #fff;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* quote section */
+
+.quote-title{
+    padding-bottom: 5rem;
+}
+
+/* projects section */
+.top-padding-img{
+    padding-top: 20%;
+}
+
+
+/* footer */
+#footer{
+    text-align: center;
+}
+.social-icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.social-icon:hover {
+    color: #8f8f8f;
+}
+
+/* responsiveness */
+@media (min-width: 768px) {
+    h1{
+        font-size: 5rem;
+    }
+
+    h2{
+        font-size: 3;
+    }
+
+    p, li{
+        font-size: 1rem;
+    }
+
+    .left-img-block {
+        max-height: 400px;
+    }
+
+    .social-icon {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    h1{
+        font-size: 9rem;
+    }
+
+    h2{
+        font-size: 6rem;
+    }
+
+    p, li{
+        font-size: 2rem;
+    }
+
+    a{
+        font-size: 2rem;
+    }
+
+    .left-img-block {
+        max-height: 800px;
+    }
+
+    .social-icon {
+        font-size: 3rem;
+    }
+}
